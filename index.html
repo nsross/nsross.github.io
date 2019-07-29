@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v4.js"></script>
 
 
-<h1>Crime in the United States2</h1>
+<h1>Crime in the United States3</h1>
 
 <div id="my_viz"></div>
 
@@ -29,7 +29,7 @@ d3.csv("data/table-1.csv",
         return { year : d3.timeParse("%Y")(d.year), value : d.value}
     },
     function(data) {
-        
+        console.log(data);
         var x = d3.scaleTime()
             .domain(d3.extent(data, function(d) {return d.year;}))
             .range([ 0, width]);
