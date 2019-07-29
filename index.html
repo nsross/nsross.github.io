@@ -23,7 +23,7 @@ var svg = d3.select("#my_viz")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
 //Read the data
-d3.csv('https://nsross.github.io/data/table-1.csv',
+d3.csv('//nsross.github.io/data/table-1.csv',
       
     function(d) {
         return { year : d3.timeParse("%Y")(d.year), value : d.value}
