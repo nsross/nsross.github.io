@@ -1,9 +1,6 @@
-﻿Year,Population,"Violent
-crime","Violent 
+﻿year,population,violent_crime,"Violent 
 crime 
-rate ","Murder and
-nonnegligent 
-manslaughter","Murder and 
+rate ",murder,"Murder and 
 nonnegligent 
 manslaughter 
 rate ","Rape
@@ -11,23 +8,16 @@ rate ","Rape
 definition)","Rape
 (revised 
 definition) 
-rate","Rape
-(legacy 
-definition)","Rape
+rate",rape,"Rape
 (legacy 
 definition) 
-rate",Robbery,"Robbery 
-rate ","Aggravated 
-assault","Aggravated 
-assault rate ","Property 
-crime","Property 
+rate",robbery,"Robbery 
+rate ",aggravated_assault,"Aggravated 
+assault rate ",property_crime,"Property 
 crime 
-rate ",Burglary,"Burglary 
-rate ","Larceny-
-theft","Larceny-
-theft rate ","Motor 
-vehicle 
-theft","Motor 
+rate ",burglary,"Burglary 
+rate ",larceny_theft,"Larceny-
+theft rate ",motor_vehicle_theft,"Motor 
 vehicle 
 theft 
 rate "

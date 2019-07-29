@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v4.js"></script>
 
 
-<h1>Crime in the United States5</h1>
+<h1>Crime in the United States6</h1>
 
 <div id="my_viz"></div>
 
@@ -26,19 +26,19 @@ var svg = d3.select("#my_viz")
 d3.csv("data/table-1.csv",
       
     function(d) {
-        return { Year : d3.timeParse("%Y")(d.Year), Population : + d.Population}
+        return { year : d3.timeParse("%Y")(d.year), violent_crime : + d.violent_crime}
     },
     function(data) {
         console.log(data);
         var x = d3.scaleTime()
-            .domain(d3.extent(data, function(d) {return d.Year;}))
+            .domain(d3.extent(data, function(d) {return d.year;}))
             .range([ 0, width]);
         svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function(d) { return d.Population; })])
+            .domain([0, d3.max(data, function(d) { return d.violent_crime; })])
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -49,8 +49,8 @@ d3.csv("data/table-1.csv",
             .attr("stroke", "steelblue")
             .attr("stroke-width", 1.5)
             .attr("d", d3.line()
-                .x(function(d) { return x(d.Year) })
-                 .y(function(d) { return y(d.Population) }))
+                .x(function(d) { return x(d.year) })
+                 .y(function(d) { return y(d.violent_crime) }))
     }         
 );
     
