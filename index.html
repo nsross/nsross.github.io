@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v4.js"></script>
 
 
-<h1>Crime in the United States3</h1>
+<h1>Crime in the United States4</h1>
 
 <div id="my_viz"></div>
 
@@ -26,7 +26,7 @@ var svg = d3.select("#my_viz")
 d3.csv("data/table-1.csv",
       
     function(d) {
-        return { year : d3.timeParse("%Y")(d.year), value : d.value}
+        return { Year : d3.timeParse("%Y")(d.Year), Population : d.Population}
     },
     function(data) {
         console.log(data);
