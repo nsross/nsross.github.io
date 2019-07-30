@@ -26,10 +26,14 @@ var svg = d3.select("#my_viz")
 d3.csv("data/table-1.csv",
       
     function(d) {
-        return { year : d3.timeParse("%Y")(d.year), violent_crime : + parseFloat(d.violent_crime.replace(/,/g, ''))}
+        return {year : d3.timeParse("%Y")(d.year), 
+                violent_crime : parseFloat(d.violent_crime.replace(/,/g, '')),
+                murder : parseFloat(d.murder.replace(/,/g, '')),
+                rape : parseFloat(d.rape.replace(/,/g, '')),
+                robbery : parseFloat(d.robbery.replace(/,/g, '')),
+                aggrivated_assault : parseFloat(d.aggrivated_assault.replace(/,/g, '')),}
     },
     function(data) {
-        console.log(data);
         var x = d3.scaleTime()
             .domain(d3.extent(data, function(d) {return d.year;}))
             .range([ 0, width]);
@@ -43,6 +47,16 @@ d3.csv("data/table-1.csv",
         svg.append("g")
             .call(d3.axisLeft(y));
     
+        /*d3.select("svg")
+            .selectAll("path")
+            .data(data)
+            .enter().append("path")
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) { return x(d.year) })
+                 .y(function(d) { return y(d) }))*/
         svg.append("path")
             .datum(data)
             .attr("fill", "none")
@@ -50,7 +64,25 @@ d3.csv("data/table-1.csv",
             .attr("stroke-width", 1.5)
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(d.violent_crime) }))
+                 .y(function(d) { return y(d.murder) }))
+    
+    svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) { return x(d.year) })
+                 .y(function(d) { return y(d.rape) }))
+    
+    svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) { return x(d.year) })
+                 .y(function(d) { return y(d.robbery) }))
     }         
 );
     
