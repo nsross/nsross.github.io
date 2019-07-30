@@ -22,7 +22,7 @@ var svg = d3.select("#my_viz")
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-var line = svg.line()
+var line = d3.line()
     .x(function(d) { return x(d.year);})
     .y(function(d) { return y(d.cases);});
 //Read the data
