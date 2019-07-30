@@ -23,9 +23,9 @@ var svg = d3.select("#my_viz")
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-line = d3.line()
+/*line = d3.line()
     .x(function(d) { return x(d.year);})
-    .y(function(d) { return y(d.cases.values);});
+    .y(function(d) { return y(d.cases.values);});*/
 //Read the data
 async function main() {
     const data = await d3.csv("data/table-1.csv",
@@ -73,7 +73,7 @@ async function main() {
             .data(data)
             .enter().append("g")
             .attr("class", "crime");
-        console.log(crime);
+        //console.log(crime);
         crime.append("path")
             .datum(data)
             .attr("fill", "none")
