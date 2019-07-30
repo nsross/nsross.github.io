@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States16</h1>
+<h1>Crime in the United States15</h1>
 
 
 <body onload="main()">
@@ -28,18 +28,13 @@ var svg = d3.select("#my_viz")
     .y(function(d) { return y(d.cases.values);});*/
 //Read the data
 async function main() {
-    data = {
-       const data = await d3.csv("data/table-1.csv", (d, i, columns) => {
-        return {
+    const data = await d3.csv("data/table-1.csv",
+    (d, i, columns) => {
+       return {
+           year: columns.slice(1).map(k => d3.timeParse("%Y")(d[k])),
            cases: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
-        };
+       };
     });
-    return {
-        cases: data,
-        years: data.columns.slice(1)
-    };
-    }
-    
     console.log(data);
     /*function(d) {
         return {year : d3.timeParse("%Y")(d.year), 
@@ -61,7 +56,7 @@ async function main() {
         });*/
         //console.log(values);
         var x = d3.scaleTime()
-            .domain(d3.extent(data, function(d) {return d.years;}))
+            .domain(d3.extent(data, function(d) {return d.year;}))
             .range([ 0, width]);
         svg.append("g")
         .attr("transform", "translate(0," + height + ")")
@@ -85,8 +80,8 @@ async function main() {
             .attr("stroke-width", 1.5)
             .attr("class", "line")
             .attr("d", d3.line()
-                .x((d,i) => x(data.years[i]))
-                 .y(d => y(d))
+                .x(function(d) { return x(d.year) })
+                 .y((d, i) => y(d.cases[i])))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
