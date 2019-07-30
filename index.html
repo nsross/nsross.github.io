@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States19</h1>
+<h1>Crime in the United States14</h1>
 
 
 <body onload="main()">
@@ -79,7 +79,7 @@ async function main() {
             .attr("stroke", "steelblue")
             .attr("stroke-width", 1.5)
             .attr("class", "line")
-            .attr("d", d3.line()
+            .attr("d", d3.line().defined(d => !isNaN(d))
                 .x(function(d) { return x(d.year) })
                  .y(d => y(d.cases)))
         /*svg.append("path")
