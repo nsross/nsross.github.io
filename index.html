@@ -12,7 +12,7 @@
 <div id="my_viz"></div>
 <script>
 
-var margin = {top: 20, right: 20, bottom: 30, left: 30},
+var margin = {top: 20, right: 20, bottom: 30, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
     
@@ -28,7 +28,7 @@ var svg = d3.select("#my_viz")
     .y(function(d) { return y(d.cases.values);});*/
 //Read the data
 async function main() {
-    const data = await d3.csv("data/table-1.csv",
+    const data = await d3.csv("data/table-1b.csv",
     (d, i, columns) => {
        return {
            year: d3.timeParse("%Y")(d.year),
