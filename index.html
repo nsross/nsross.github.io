@@ -28,13 +28,19 @@ var svg = d3.select("#my_viz")
     .y(function(d) { return y(d.cases.values);});*/
 //Read the data
 async function main() {
-    const data = await d3.csv("data/table-1.csv",
-    (d, i, columns) => {
-       return {
-           year: columns.slice(1).map(k => d3.timeParse("%Y")(d[k])),
+    data {
+       const data = await d3.csv("data/table-1.csv",
+        (d, i, columns) => {
+        return {
            cases: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
-       };
+        };
     });
+    return {
+        cases: data,
+        years: columns.slice(1).map(d3.timeParse("%Y"))
+    };
+    }
+    
     console.log(data);
     /*function(d) {
         return {year : d3.timeParse("%Y")(d.year), 
@@ -56,7 +62,7 @@ async function main() {
         });*/
         //console.log(values);
         var x = d3.scaleTime()
-            .domain(d3.extent(data, function(d) {return d.year;}))
+            .domain(d3.extent(data, function(d) {return d.years;}))
             .range([ 0, width]);
         svg.append("g")
         .attr("transform", "translate(0," + height + ")")
@@ -69,7 +75,7 @@ async function main() {
             .call(d3.axisLeft(y));
     
         var crime = svg.selectAll(".crime")
-            .data(data)
+            .data(data.cases)
             .enter().append("g")
             .attr("class", "crime");
         //console.log(crime);
@@ -80,8 +86,8 @@ async function main() {
             .attr("stroke-width", 1.5)
             .attr("class", "line")
             .attr("d", d3.line()
-                .x(function(d) { return x(d.year) })
-                 .y((d, i) => y(d.cases[i])))
+                .x((d,i) => x(data.years[i]))
+                 .y(d => y(d))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
