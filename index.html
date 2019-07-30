@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States13</h1>
+<h1>Crime in the United States14</h1>
 
 
 <body onload="main()">
@@ -76,6 +76,7 @@ async function main() {
             .attr("class", "crime");
         console.log(crime);
         crime.append("path")
+            .datum(data)
             .attr("fill", "none")
             .attr("stroke", "steelblue")
             .attr("stroke-width", 1.5)
