@@ -71,7 +71,7 @@ async function main() {
             .call(d3.axisLeft(y));
     
         var crime = svg.selectAll(".crime")
-            .data(data.cases)
+            .data(data)
             .enter().append("g")
             .attr("class", "crime");
         console.log(crime);
