@@ -5,10 +5,10 @@
 <script src="//d3js.org/d3.v4.js"></script>
 
 
-<h1>Crime in the United States11</h1>
+<h1>Crime in the United States12</h1>
 
 <div id="my_viz"></div>
-
+<body onload="main()"></body>
 <script>
 
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
@@ -26,7 +26,8 @@ var line = d3.svg.line()
     .x(function(d) { return x(d.year);})
     .y(function(d) { return y(d.cases);});
 //Read the data
-const data = await d3.csv("data/table-1.csv",
+async function main() {
+    const data = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
        return {
            year: d3.timeParse("%Y")(d.year),
@@ -103,6 +104,8 @@ const data = await d3.csv("data/table-1.csv",
                  .y(function(d) { return y(d.robbery) }))*/
     //}         
 //);
+}
+
     
 
 
