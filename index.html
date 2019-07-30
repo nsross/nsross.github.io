@@ -82,7 +82,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(+d.cases) }))
+                 .y(function(d) { console.log(y(d.cases)); return y(d.cases); }))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
