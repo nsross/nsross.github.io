@@ -32,6 +32,7 @@ async function main() {
     const data2 = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
        return { 
+            name: "test",
            values: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
