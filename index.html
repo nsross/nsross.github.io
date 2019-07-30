@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States16</h1>
+<h1>Crime in the United States17</h1>
 
 
 <body onload="main()">
@@ -29,15 +29,15 @@ var svg = d3.select("#my_viz")
 //Read the data
 async function main() {
     data = {
-    const data = await d3.csv("data/table-1.csv",
+    const data2 = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
        return { 
            values: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
     return {
-        cases: data,
-        years: data.columns.slice(1).map(d3.utcParse("%Y"))
+        cases: data2,
+        years: data2.columns.slice(1).map(d3.utcParse("%Y"))
     };
     }
     console.log(data);
