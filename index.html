@@ -43,7 +43,8 @@ d3.csv("data/table-1.csv",
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function(d) { return d.violent_crime; })])
+            //.domain([0, d3.max(data, function(d) { return d.violent_crime; })])
+            .domain([0, 1000])
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -67,7 +68,7 @@ d3.csv("data/table-1.csv",
                 .x(function(d) { return x(d.year) })
                  .y(function(d) { return y(d.murder) }))
     
-    /*svg.append("path")
+    svg.append("path")
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", "steelblue")
@@ -83,7 +84,7 @@ d3.csv("data/table-1.csv",
             .attr("stroke-width", 1.5)
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(d.robbery) }))*/
+                 .y(function(d) { return y(d.robbery) }))
     }         
 );
     
