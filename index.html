@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States15</h1>
+<h1>Crime in the United States14</h1>
 
 
 <body onload="main()">
@@ -25,7 +25,7 @@ var svg = d3.select("#my_viz")
     
 line = d3.line()
     .x(function(d) { return x(d.year);})
-    .y(function(d) { return y(d.cases);});
+    .y(function(d) { return y(d.cases.values);});
 //Read the data
 async function main() {
     const data = await d3.csv("data/table-1.csv",
@@ -70,6 +70,7 @@ async function main() {
             .call(d3.axisLeft(y));
     
         var crime = svg.selectAll(".crime")
+            .data(data)
             .enter().append("g")
             .attr("class", "crime");
         console.log(crime);
@@ -81,7 +82,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(d.cases) }))
+                 .y(function(d) { return y(d.cases.values) }))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
