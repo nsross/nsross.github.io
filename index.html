@@ -35,7 +35,7 @@ d3.csv("data/table-1.csv",
     },
     function(data) {
     console.log(data);
-        var values = d3.scale().domain().map(function(name) {
+        var values = d3.scale.linear().domain().map(function(name) {
             return {
                 name: name,
                 values: data.map(function(d) {
