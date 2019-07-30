@@ -37,7 +37,7 @@ async function main() {
     });
     return {
         cases: data,
-        years: data.columns.slice(1).map(d3.timeParse("%Y"))
+        years: data.columns.slice(1)
     };
     }
     
