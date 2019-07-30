@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v4.js"></script>
 
 
-<h1>Crime in the United States12</h1>
+<h1>Crime in the United States13</h1>
 
 <div id="my_viz"></div>
 <body onload="main()">
@@ -22,7 +22,7 @@ var svg = d3.select("#my_viz")
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-var line = d3.svg.line()
+var line = svg.line()
     .x(function(d) { return x(d.year);})
     .y(function(d) { return y(d.cases);});
 //Read the data
@@ -69,7 +69,7 @@ async function main() {
     
         var crime = d3.select("svg")
             .selectAll(".crime")
-            .data(values)
+            .data(data)
             .enter().append("g")
             .attr("class", "crime");
         
