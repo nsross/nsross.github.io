@@ -34,6 +34,7 @@ async function main() {
            cases: columns.slice(1).map(k => + d[k].replace(/,/g, ''))
        };
     });
+    console.log(data);
     /*function(d) {
         return {year : d3.timeParse("%Y")(d.year), 
                 violent_crime : parseFloat(d.violent_crime.replace(/,/g, '')),
