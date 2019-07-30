@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States18</h1>
+<h1>Crime in the United States17</h1>
 
 
 <body onload="main()">
@@ -23,8 +23,8 @@ var svg = d3.select("#my_viz")
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-var line = d3.line()
-.defined(d => !isNaN(d))
+liness = d3.line()
+    .defined(d => !isNaN(d))
     .x(function(d) { return x(d.year);})
     .y(function(d) { return y(d);});
 //Read the data
@@ -80,7 +80,7 @@ async function main() {
             .attr("stroke", "steelblue")
             .attr("stroke-width", 1.5)
             .attr("class", "line")
-            .attr("d", d => line(d.values))
+            .attr("d", d => liness(d.values))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
