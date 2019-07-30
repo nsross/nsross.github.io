@@ -8,7 +8,7 @@
 <h1>Crime in the United States18</h1>
 
 
-//<body onload="main()">
+<!--<body onload="main()">-->
 <div id="my_viz"></div>
 <script>
 
@@ -47,14 +47,14 @@ var line = d3.line()
     },
     function(data) {
     //console.log(data);
-        var values = d3.scaleLinear().domain().map(function(name) {
+        /*var values = d3.scaleLinear().domain().map(function(name) {
             return {
                 name: name,
                 values: data.map(function(d) {
                     return {year: d.year, cases: + d[name].replace(/,/g, '')}
                 })
             }
-        });
+        });*/
         //console.log(values);
         var x = d3.scaleTime()
             .domain(d3.extent(data, function(d) {return d.year;}))
