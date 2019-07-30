@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States16</h1>
+<h1>Crime in the United States15</h1>
 
 
 <body onload="main()">
@@ -32,7 +32,7 @@ async function main() {
     (d, i, columns) => {
        return {
            year: d3.timeParse("%Y")(d.year),
-           cases: map(k => parseFloat(d[k].replace(/,/g, '')))
+           cases: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
     console.log(data);
@@ -81,7 +81,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
-                 .y(d => y(d.cases)))
+                 .y((d, i) => y(d.cases[i])))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
