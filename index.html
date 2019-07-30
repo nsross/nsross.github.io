@@ -31,7 +31,7 @@ async function main() {
     const data = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
        return {
-           years: data.columns.slice(0,1).map(d3.utcParse("%Y")),
+           years: columns.slice(0,1).map(d3.utcParse("%Y")),
            values: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
