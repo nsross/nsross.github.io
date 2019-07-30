@@ -34,6 +34,7 @@ d3.csv("data/table-1.csv",
                 aggrivated_assault : parseFloat(d.aggrivated_assault.replace(/,/g, '')),}
     },
     function(data) {
+    console.log(data);
         var x = d3.scaleTime()
             .domain(d3.extent(data, function(d) {return d.year;}))
             .range([ 0, width]);
@@ -66,7 +67,7 @@ d3.csv("data/table-1.csv",
                 .x(function(d) { return x(d.year) })
                  .y(function(d) { return y(d.murder) }))
     
-    svg.append("path")
+    /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", "steelblue")
@@ -82,7 +83,7 @@ d3.csv("data/table-1.csv",
             .attr("stroke-width", 1.5)
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(d.robbery) }))
+                 .y(function(d) { return y(d.robbery) }))*/
     }         
 );
     
