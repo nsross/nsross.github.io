@@ -5,10 +5,10 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States18</h1>
+<h1>Crime in the United States19</h1>
 
 
-<!--<body onload="main()">-->
+<body onload="main()">
 <div id="my_viz"></div>
 <script>
 
@@ -27,27 +27,26 @@ var line = d3.line()
     .x(function(d) { return x(d.year);})
     .y(function(d) { return y(d.cases);});
 //Read the data
-/*async function main() {
+async function main() {
     const data = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
        return {
            year: d3.timeParse("%Y")(d.year),
            cases: columns.slice(1).map(k => + d[k].replace(/,/g, ''))
        };
-    });*/
-    //console.log(data);
-    d3.csv("data/table-1.csv",
-    function(d) {
+    });
+    console.log(data);
+    /*function(d) {
         return {year : d3.timeParse("%Y")(d.year), 
                 violent_crime : parseFloat(d.violent_crime.replace(/,/g, '')),
                 murder : parseFloat(d.murder.replace(/,/g, '')),
                 rape : parseFloat(d.rape.replace(/,/g, '')),
                 robbery : parseFloat(d.robbery.replace(/,/g, '')),
                 aggravated_assault : parseFloat(d.aggravated_assault.replace(/,/g, ''))}
-    },
-    function(data) {
+    },*/
+    /*function(data) {
     //console.log(data);
-        /*var values = d3.scaleLinear().domain().map(function(name) {
+        var values = d3.scaleLinear().domain().map(function(name) {
             return {
                 name: name,
                 values: data.map(function(d) {
@@ -70,7 +69,7 @@ var line = d3.line()
         svg.append("g")
             .call(d3.axisLeft(y));
     
-       /* var crime = svg.selectAll(".crime")
+        var crime = svg.selectAll(".crime")
             .data(data)
             .enter().append("g")
             .attr("class", "crime");
@@ -83,10 +82,8 @@ var line = d3.line()
             .attr("class", "line")
             .attr("d", d3.line()
     .x(function(d) { return x(d.year);})
-    .y(function(d) { return y(d.cases);}))*/
-    
-    
-        svg.append("path")
+    .y(function(d) { return y(d.cases);}))
+        /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", "steelblue")
@@ -95,7 +92,7 @@ var line = d3.line()
                 .x(function(d) { return x(d.year) })
                  .y(function(d) { return y(d.murder) }))
     
-    /*svg.append("path")
+    svg.append("path")
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", "steelblue")
@@ -112,13 +109,13 @@ var line = d3.line()
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
                  .y(function(d) { return y(d.robbery) }))*/
-    }         
-);
-//}
+    //}         
+//);
+}
 
     
 
 
 
 </script>
-    //</body>
+    </body>
