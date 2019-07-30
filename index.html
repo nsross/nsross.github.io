@@ -34,7 +34,7 @@ d3.csv("data/table-1.csv",
                 aggravated_assault : parseFloat(d.aggravated_assault.replace(/,/g, ''))}
     },
     function(data) {
-    console.log(data);
+    //console.log(data);
         var values = d3.scale.linear().domain().map(function(name) {
             return {
                 name: name,
