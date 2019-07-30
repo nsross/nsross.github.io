@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States18</h1>
+<h1>Crime in the United States19</h1>
 
 
 <body onload="main()">
@@ -63,7 +63,7 @@ async function main() {
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function(d) { return d.property_crime; })])
+            .domain([0, d3.max(data, function(d) { return d[cases] })])
             //.domain([0, 1000000])
             .range([ height, 0]);
         svg.append("g")
