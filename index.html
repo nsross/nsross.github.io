@@ -32,7 +32,7 @@ async function main() {
     const data = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
        return { 
-           cases: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
+           values: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
     return {
