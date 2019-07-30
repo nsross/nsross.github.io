@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v4.js"></script>
 
 
-<h1>Crime in the United States10</h1>
+<h1>Crime in the United States11</h1>
 
 <div id="my_viz"></div>
 
@@ -22,18 +22,26 @@ var svg = d3.select("#my_viz")
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
+var line = d3.svg.line()
+    .x(function(d) { return x(d.year);})
+    .y(function(d) { return y(d.cases);});
 //Read the data
-d3.csv("data/table-1.csv",
-      
-    function(d) {
+const data = await d3.csv("data/table-1.csv",
+    (d, i, columns) => {
+       return {
+           year: d3.timeParse("%Y")(d.year),
+           cases: columns.slice(1).map(k => + d[k].replace(/,/g, ''))
+       };
+    )};
+    /*function(d) {
         return {year : d3.timeParse("%Y")(d.year), 
                 violent_crime : parseFloat(d.violent_crime.replace(/,/g, '')),
                 murder : parseFloat(d.murder.replace(/,/g, '')),
                 rape : parseFloat(d.rape.replace(/,/g, '')),
                 robbery : parseFloat(d.robbery.replace(/,/g, '')),
                 aggravated_assault : parseFloat(d.aggravated_assault.replace(/,/g, ''))}
-    },
-    function(data) {
+    },*/
+    /*function(data) {
     //console.log(data);
         var values = d3.scaleLinear().domain().map(function(name) {
             return {
@@ -42,7 +50,7 @@ d3.csv("data/table-1.csv",
                     return {year: d.year, cases: + d[name].replace(/,/g, '')}
                 })
             }
-        });
+        });*/
         //console.log(values);
         var x = d3.scaleTime()
             .domain(d3.extent(data, function(d) {return d.year;}))
@@ -93,8 +101,8 @@ d3.csv("data/table-1.csv",
             .attr("d", d3.line()
                 .x(function(d) { return x(d.year) })
                  .y(function(d) { return y(d.robbery) }))*/
-    }         
-);
+    //}         
+//);
     
 
 
