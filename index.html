@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States15</h1>
+<h1>Crime in the United States16</h1>
 
 
 <body onload="main()">
@@ -24,7 +24,7 @@ var svg = d3.select("#my_viz")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
 liness = d3.line()
-    .defined(d => !isNaN(d))
+    //.defined(d => !isNaN(d))
     .x(function(d) { return x(d.year);})
     .y(function(d) { return y(d.cases);});
 //Read the data
