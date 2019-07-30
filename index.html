@@ -28,19 +28,14 @@ var svg = d3.select("#my_viz")
     .y(function(d) { return y(d.cases.values);});*/
 //Read the data
 async function main() {
-    data = {
-    const data2 = await d3.csv("data/table-1.csv",
+    const data = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
-       return { 
-            name: "test",
+       return {
+           years: data.columns.slice(0,1).map(d3.utcParse("%Y"))
            values: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
-    return {
-        cases: data2,
-        years: data2.columns.slice(1).map(d3.utcParse("%Y"))
-    };
-    }
+
     console.log(data);
     /*function(d) {
         return {year : d3.timeParse("%Y")(d.year), 
