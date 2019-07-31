@@ -28,7 +28,7 @@ async function main() {
     const data = await d3.csv("data/table-1.csv",
     (d) => {
        return {
-            year: d3.timePArse("%Y")(d.year),
+            year: d3.timeParse("%Y")(d.year),
            murder: parseFloat(d.murder.replace(/,/g, '')),
            rape: parseFloat(d.rape.replace(/,/g, '')),
            robbery: parseFloat(d.robbery.replace(/,/g, '')),
