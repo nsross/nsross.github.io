@@ -33,6 +33,9 @@ async function main() {
            rape: parseFloat(d.rape.replace(/,/g, '')),
            robbery: parseFloat(d.robbery.replace(/,/g, '')),
            aggravated_assault: parseFloat(d.aggravated_assault.replace(/,/g, '')),
+           burglary: parseFloat(d.burglary.replace(/,/g, '')),
+           larceny_theft: parseFloat(d.larceny_theft.replace(/,/g, '')),
+           motor_vehicle_theft: parseFloat(d.motor_vehicle_theft.replace(/,/g, ''))
        };
     });
 
@@ -45,7 +48,7 @@ async function main() {
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function(d) { return d.aggravated_assault;})]).nice()
+            .domain([0, d3.max(data, function(d) { return d.larceny_theft;})]).nice()
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -94,6 +97,38 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.robbery)))
+    
+    svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.burglary)))
+    
+    
+    
+    svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.larceny_theft)))
+    
+    svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.motor_vehicle_theft)))
 }
 
     
