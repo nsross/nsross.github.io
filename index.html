@@ -81,7 +81,7 @@ async function main() {
             .attr("stroke-width", 1.5)
             .attr("class", "line")
             .attr("d", d3.line()
-                .x(d => x(d.year))
+                .x(function(d) { console.log(d.year); return x(d.year);})
                  .y((d,i) => y(d.cases[i])))
         /*svg.append("path")
             .datum(data)
