@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States19</h1>
+<h1>Crime in the United States16</h1>
 
 
 <body onload="main()">
@@ -70,7 +70,7 @@ async function main() {
             .call(d3.axisLeft(y));
     
         var crime = svg.selectAll(".crime")
-            .data(data.cases)
+            .data(data)
             .enter().append("g")
             .attr("class", "crime");
         //console.log(crime);
