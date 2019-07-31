@@ -31,7 +31,7 @@ async function main() {
     const data = await d3.csv("data/table-1.csv",
     (d, i, columns) => {
        return {
-            year: columns.slice(1).map(d3.timeParse("%Y")),
+            year: columns.slice(1).map(k => + d[k]),
            cases: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
@@ -56,8 +56,8 @@ async function main() {
             }
         });*/
         //console.log(values);
-        var x = d3.scaleTime()
-            .domain(d3.extent(data, function(d) {console.log(d); return d.year;}))
+        var x = d3.scaleLinear()
+            .domain(d3.extent(data, function(d) {return d.year;}))
             .range([ 0, width]);
         svg.append("g")
         .attr("transform", "translate(0," + height + ")")
