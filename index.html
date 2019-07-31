@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States16</h1>
+<h1>Crime in the United States18</h1>
 
 
 <body onload="main()">
@@ -82,7 +82,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x((d,i) => x(d.year[i]))
-                 .y((d, i) => y(d.cases[i])))
+                 .y(d => y(d.cases)))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
