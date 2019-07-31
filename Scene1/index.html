@@ -25,19 +25,17 @@ var svg = d3.select("#my_viz")
 
 //Read the data
 async function main() {
-    const data = await d3.csv("data/murder_guns.csv",
+    const data = await d3.csv("data/table-1.csv",
     (d) => {
        return {
-           state: d.state,
-           total_murders: parseFloat(d.total_murders.replace(/,/g, '')),
-           total_firearms: parseFloat(d.total_firearms.replace(/,/g, '')),
-           handguns: parseFloat(d.handguns.replace(/,/g, '')),
-           rifles: parseFloat(d.rifles.replace(/,/g, '')),
-           shotguns: parseFloat(d.shotguns.replace(/,/g, '')),
-           unknown_firearm: parseFloat(d.unknown_firearm.replace(/,/g, '')),
-           knives: parseFloat(d.knives.replace(/,/g, '')),
-           other_weapon: parseFloat(d.other_weapon.replace(/,/g, '')),
-           hands: parseFloat(d.hands.replace(/,/g, ''))
+            year: d3.timeParse("%Y")(d.year),
+           murder: parseFloat(d.murder.replace(/,/g, '')),
+           rape: parseFloat(d.rape.replace(/,/g, '')),
+           robbery: parseFloat(d.robbery.replace(/,/g, '')),
+           aggravated_assault: parseFloat(d.aggravated_assault.replace(/,/g, '')),
+           burglary: parseFloat(d.burglary.replace(/,/g, '')),
+           larceny_theft: parseFloat(d.larceny_theft.replace(/,/g, '')),
+           motor_vehicle_theft: parseFloat(d.motor_vehicle_theft.replace(/,/g, ''))
        };
     });
 
