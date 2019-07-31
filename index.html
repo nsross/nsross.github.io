@@ -57,7 +57,7 @@ async function main() {
         });*/
         //console.log(values);
         var x = d3.scaleTime()
-            .domain(d3.extent(data, function(d) {return d.year;}))
+            .domain(d3.extent(data, function(d) {return d[0].year;}))
             .range([ 0, width]);
         svg.append("g")
         .attr("transform", "translate(0," + height + ")")
@@ -82,7 +82,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(function(d,i) { console.log(data[0].year[i]); return x(data[0].year[i]);})
-                 .y(function(d) { return y(d.cases);}))
+                 .y(function(d,i) { console.log(d.cases[i]); return y(d.cases[i]);}))
         /*svg.append("path")
             .datum(data)
             .attr("fill", "none")
