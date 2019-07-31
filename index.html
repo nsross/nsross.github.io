@@ -22,41 +22,22 @@ var svg = d3.select("#my_viz")
         .attr("height", height + margin.top + margin.bottom)
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    
-/*line = d3.line()
-    .x(function(d) { return x(d.year);})
-    .y(function(d) { return y(d.cases.values);});*/
+
 //Read the data
 async function main() {
     const data = await d3.csv("data/table-1.csv",
-    (d, i, columns) => {
+    (d) => {
        return {
-            year: columns.slice(1).map(k => parseFloat(d[k])),
-           cases: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
+            year: d3.timePArse("%Y")(d.year),
+           murder: parseFloat(d.murder.replace(/,/g, '')),
+           rape: parseFloat(d.rape.replace(/,/g, '')),
+           robbery: parseFloat(d.robbery.replace(/,/g, '')),
+           aggravated_assault: parseFloat(d.aggravated_assault.replace(/,/g, '')),
        };
     });
 
     console.log(data);
-    /*function(d) {
-        return {year : d3.timeParse("%Y")(d.year), 
-                violent_crime : parseFloat(d.violent_crime.replace(/,/g, '')),
-                murder : parseFloat(d.murder.replace(/,/g, '')),
-                rape : parseFloat(d.rape.replace(/,/g, '')),
-                robbery : parseFloat(d.robbery.replace(/,/g, '')),
-                aggravated_assault : parseFloat(d.aggravated_assault.replace(/,/g, ''))}
-    },*/
-    /*function(data) {
-    //console.log(data);
-        var values = d3.scaleLinear().domain().map(function(name) {
-            return {
-                name: name,
-                values: data.map(function(d) {
-                    return {year: d.year, cases: + d[name].replace(/,/g, '')}
-                })
-            }
-        });*/
-        //console.log(values);
-        var x = d3.scaleLinear()
+        var x = d3.scaleTime()
             .domain(d3.extent(data, function(d) {return d.year;}))
             .range([ 0, width]);
         svg.append("g")
@@ -64,53 +45,25 @@ async function main() {
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function(d) { return d.cases[5];})]).nice()
+            .domain([0, d3.max(data, function(d) { return d.aggravated_assault;})]).nice()
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
     
-        var crime = svg.selectAll(".crime")
+        /*var crime = svg.selectAll(".crime")
             .data(data)
             .enter().append("g")
             .attr("class", "crime");
-        //console.log(crime);
-        crime.append("path")
+        //console.log(crime);*/
+        svg.append("path")
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", "steelblue")
             .attr("stroke-width", 1.5)
             .attr("class", "line")
             .attr("d", d3.line()
-                .x(function(d,i) { console.log(data[0].year[i]); return x(data[0].year[i]);})
-                 .y(function(d,i) { console.log(d.cases[i]); return y(d.cases[i]);}))
-        /*svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("d", d3.line()
-                .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(d.murder) }))
-    
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("d", d3.line()
-                .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(d.rape) }))
-    
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("d", d3.line()
-                .x(function(d) { return x(d.year) })
-                 .y(function(d) { return y(d.robbery) }))*/
-    //}         
-//);
+                .x(d => x(d.year))
+                 .y(d => y(d.murder))
 }
 
     
