@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States18</h1>
+<h1>Crime in the United States19</h1>
 
 
 <body onload="main()">
@@ -32,7 +32,7 @@ async function main() {
     (d, i, columns) => {
        return {
             year: columns.slice(1),
-           values: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
+           cases: columns.slice(1).map(k => parseFloat(d[k].replace(/,/g, '')))
        };
     });
 
