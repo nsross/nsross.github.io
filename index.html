@@ -57,7 +57,7 @@ async function main() {
         });*/
         //console.log(values);
         var x = d3.scaleTime()
-            .domain(d3.extent(data, function(d) {return d.year;}))
+            .domain(d3.extent(data[0], function(d) {return d.year;}))
             .range([ 0, width]);
         svg.append("g")
         .attr("transform", "translate(0," + height + ")")
