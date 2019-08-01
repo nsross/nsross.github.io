@@ -74,7 +74,7 @@ async function main() {
         svg.append("g")
             .call(d3.axisLeft(y));
     function update(data) {
-        console.log(data);
+
         var handguns = svg.selectAll(".handguns")
           .data(data);
         
@@ -91,59 +91,101 @@ async function main() {
         
         handguns.exit().remove();
         
-        svg.selectAll("bar")
-          .data(data)
-          .enter().append("rect")
+        var rifles = svg.selectAll(".rifles")
+          .data(data);
+        
+        rifles.enter().append("rect")
           .style("fill", "steelblue")
+          .attr("class", "rifles")
           .attr("x", x("Rifles"))
-          .attr("width", x.bandwidth())
+          .attr("width", x.bandwidth());
+        
+        rifles.transition()
+          .duration(500)
           .attr("y", function(d) { return y(d.rifles); })
           .attr("height", function(d) { return height - y(d.rifles); });
         
-        svg.selectAll("bar")
-          .data(data)
-          .enter().append("rect")
+        rifles.exit().remove();
+        
+        var shotguns = svg.selectAll(".shotguns")
+          .data(data);
+        
+        shotguns.enter().append("rect")
           .style("fill", "steelblue")
+          .attr("class", "shotguns")
           .attr("x", x("Shotguns"))
-          .attr("width", x.bandwidth())
+          .attr("width", x.bandwidth());
+        
+        shotguns.transition()
+          .duration(500)
           .attr("y", function(d) { return y(d.shotguns); })
           .attr("height", function(d) { return height - y(d.shotguns); });
         
-        svg.selectAll("bar")
-          .data(data)
-          .enter().append("rect")
+        shotguns.exit().remove();
+        
+        var unknown_firearm = svg.selectAll(".unknown_firearm")
+          .data(data);
+        
+        unknown_firearm.enter().append("rect")
           .style("fill", "steelblue")
+          .attr("class", "unknown_firearm")
           .attr("x", x("Unknown Firearm"))
-          .attr("width", x.bandwidth())
+          .attr("width", x.bandwidth());
+        
+        unknown_firearm.transition()
+          .duration(500)
           .attr("y", function(d) { return y(d.unknown_firearm); })
           .attr("height", function(d) { return height - y(d.unknown_firearm); });
         
-        svg.selectAll("bar")
-          .data(data)
-          .enter().append("rect")
+        unknown_firearm.exit().remove();
+        
+        var knives = svg.selectAll(".knives")
+          .data(data);
+        
+          knives.enter().append("rect")
           .style("fill", "steelblue")
+          .attr("class", "knives")
           .attr("x", x("Knives"))
-          .attr("width", x.bandwidth())
+          .attr("width", x.bandwidth());
+        
+        knives.transition()
+          .duration(500)
           .attr("y", function(d) { return y(d.knives); })
           .attr("height", function(d) { return height - y(d.knives); });
         
-        svg.selectAll("bar")
-          .data(data)
-          .enter().append("rect")
+        knives.exit().remove();
+        
+        var other_weapon = svg.selectAll(".other_weapon")
+          .data(data);
+
+          other_weapon.enter().append("rect")
           .style("fill", "steelblue")
+          .attr("class", "other_weapon")
           .attr("x", x("Other Weapon"))
-          .attr("width", x.bandwidth())
+          .attr("width", x.bandwidth());
+        
+        other_weapon.transition()
+          .duration(500)
           .attr("y", function(d) { return y(d.other_weapon); })
           .attr("height", function(d) { return height - y(d.other_weapon); });
         
-        svg.selectAll("bar")
-          .data(data)
-          .enter().append("rect")
+        other_weapon.exit().remove();
+        
+        var hands = svg.selectAll(".hands")
+          .data(data);
+        
+          hands.enter().append("rect")
           .style("fill", "steelblue")
+          .attr("class", "hands")
           .attr("x", x("Hands"))
-          .attr("width", x.bandwidth())
+          .attr("width", x.bandwidth());
+        
+        hands.transition()
+          .duration(500)
           .attr("y", function(d) { return y(d.hands); })
           .attr("height", function(d) { return height - y(d.hands); });
+        
+        hands.exit().remove();
     }
     
     var currentState = "Michigan";
