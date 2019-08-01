@@ -50,6 +50,7 @@ async function main() {
     murderData.forEach(function(d) {
         var opt = document.createElement('option');
         opt.value = d.state;
+        opt.innerHTML = d.state;
         fragment.appendChild(opt);
     });
     sel.appendChild(fragment);
