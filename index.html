@@ -75,14 +75,21 @@ async function main() {
             .call(d3.axisLeft(y));
     function update(data) {
         console.log(data);
-        svg.selectAll("bar")
-          .data(data)
-          .enter().append("rect")
+        var handguns = svg.selectAll(".handguns")
+          .data(data);
+        
+        handguns.enter().append("rect")
           .style("fill", "steelblue")
+          .attr("class", "handguns")
           .attr("x", x("Handguns"))
-          .attr("width", x.bandwidth())
+          .attr("width", x.bandwidth());
+        
+        handguns.transition()
+            .duration(.5)
           .attr("y", function(d) { return y(d.handguns); })
           .attr("height", function(d) { return height - y(d.handguns); });
+        
+        handguns.exit().remove();
         
         svg.selectAll("bar")
           .data(data)
