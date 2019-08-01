@@ -65,6 +65,60 @@ async function main() {
           .attr("width", x.bandwidth())
           .attr("y", function(d) { return y(d.handguns); })
           .attr("height", function(d) { return height - y(d.handguns); });
+        
+        svg.selectAll("bar")
+          .data(data)
+          .enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("x", x("Rifles"))
+          .attr("width", x.bandwidth())
+          .attr("y", function(d) { return y(d.rifles); })
+          .attr("height", function(d) { return height - y(d.rifles); });
+        
+        svg.selectAll("bar")
+          .data(data)
+          .enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("x", x("Shotguns"))
+          .attr("width", x.bandwidth())
+          .attr("y", function(d) { return y(d.shotguns); })
+          .attr("height", function(d) { return height - y(d.shotguns); });
+        
+        svg.selectAll("bar")
+          .data(data)
+          .enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("x", x("Unknown Firearm"))
+          .attr("width", x.bandwidth())
+          .attr("y", function(d) { return y(d.unknown_firearm); })
+          .attr("height", function(d) { return height - y(d.unknown_firearm); });
+        
+        svg.selectAll("bar")
+          .data(data)
+          .enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("x", x("Knives"))
+          .attr("width", x.bandwidth())
+          .attr("y", function(d) { return y(d.knives); })
+          .attr("height", function(d) { return height - y(d.knives); });
+        
+        svg.selectAll("bar")
+          .data(data)
+          .enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("x", x("Other Weapon"))
+          .attr("width", x.bandwidth())
+          .attr("y", function(d) { return y(d.other_weapon); })
+          .attr("height", function(d) { return height - y(d.other_weapon); });
+        
+        svg.selectAll("bar")
+          .data(data)
+          .enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("x", x("Hands"))
+          .attr("width", x.bandwidth())
+          .attr("y", function(d) { return y(d.hands); })
+          .attr("height", function(d) { return height - y(d.hands); });
     }
     
     var currentState = "Michigan";
