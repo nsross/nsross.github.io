@@ -42,7 +42,7 @@ async function main() {
     });
 
     console.log(murderData);
-        var x = d3.scaleOrdinal()
+        var x = d3.scaleBand()
             .domain(["Murder", "Robbery", "Aggravated Assault"])
             .range([ 0, width]);
         svg.append("g")
