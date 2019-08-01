@@ -43,7 +43,7 @@ async function main() {
 
     console.log(murderData);
         var x = d3.scaleBand()
-            .domain(["Murder", "Robbery", "Aggravated Assault"])
+            .domain(["Handguns", "Rifles", "Shotguns", "Unknown Firearm", "Knives", "Other Weapon", "Hands"])
             .range([ 0, width])
             .paddingInner(.05);
         svg.append("g")
@@ -51,7 +51,7 @@ async function main() {
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0,100])
+            .domain([0,1000])
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -60,10 +60,11 @@ async function main() {
           .data(murderData)
           .enter().append("rect")
           .style("fill", "steelblue")
-          .attr("x", "Murder")
+          .attr("x", x("Handguns"))
           .attr("width", x.bandwidth())
-          .attr("y", function(d) { return y(100); })
-          .attr("height", function(d) { return height - y(100); });
+          .attr("y", function(d) { return y(d.handguns); })
+          .attr("height", function(d) { return height - y(d.handguns); });
+    
     
     
     
