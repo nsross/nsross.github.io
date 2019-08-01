@@ -55,7 +55,7 @@ async function main() {
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
-    
+    function update(data) {
         svg.selectAll("bar")
           .data(murderData)
           .enter().append("rect")
@@ -64,7 +64,11 @@ async function main() {
           .attr("width", x.bandwidth())
           .attr("y", function(d) { return y(d.handguns); })
           .attr("height", function(d) { return height - y(d.handguns); });
+    }
     
+    var currentState = "Michigan";
+        
+    update(murderData.filter(function(d) { return d.state == currentState;}));
     
     
     
