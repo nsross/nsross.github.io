@@ -60,7 +60,7 @@ async function main() {
           .enter().append("rect")
           .style("fill", "steelblue")
           .attr("x", "Murder")
-          .attr("width", width/4)
+          .attr("width", x.bandwidth())
           .attr("y", function(d) { return y(100); })
           .attr("height", function(d) { return height - y(100); });
     
