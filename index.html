@@ -54,6 +54,11 @@ async function main() {
         fragment.appendChild(opt);
     });
     sel.appendChild(fragment);
+    d3.select('#states')
+        .on('change', function() {
+       currentState = eval(d3.select(this).property('value'));
+        update(murderData.filter(function(d) { return d.state == currentState;}))
+    });
     
         var x = d3.scaleBand()
             .domain(["Handguns", "Rifles", "Shotguns", "Unknown Firearm", "Knives", "Other Weapon", "Hands"])
