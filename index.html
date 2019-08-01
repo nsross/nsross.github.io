@@ -9,7 +9,11 @@
 
 
 <body onload="main()">
-<div id="my_viz"></div>
+<div id="my_viz">
+    <select id="states">
+        
+    </select>
+</div>
 <script>
 
 var margin = {top: 20, right: 20, bottom: 30, left: 60},
@@ -41,6 +45,14 @@ async function main() {
        };
     });
 
+    var sel = document.getElementById('states');
+    var fragment = document.createDocumentFragment();
+    murderData.forEach(function(d) {
+        var opt = document.createElement('option');
+        opt.value = d.state;
+        fragment.appendChild(opt);
+    });
+    sel.appendChild(fragment);
     
         var x = d3.scaleBand()
             .domain(["Handguns", "Rifles", "Shotguns", "Unknown Firearm", "Knives", "Other Weapon", "Hands"])
