@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States16</h1>
+<h1>Crime in the United States13</h1>
 
 
 <body onload="main()">
@@ -25,7 +25,7 @@ var svg = d3.select("#my_viz")
 
 //Read the data
 async function main() {
-    const data = await d3.csv("data/murder_guns.csv",
+    const murderData = await d3.csv("data/murder_guns.csv",
     (d) => {
        return {
            state: d.state,
@@ -42,95 +42,30 @@ async function main() {
     });
 
     console.log(data);
-        var x = d3.scaleTime()
-            .domain(d3.extent(data, function(d) {return d.year;}))
+        var x = d3.scaleOrdinal()
+            .domain(["Murder", "Robbery", "Aggravated Assault"])
             .range([ 0, width]);
         svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function(d) { return d.larceny_theft;})]).nice()
+            .domain([0,100])
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
     
-        /*var crime = svg.selectAll(".crime")
-            .data(data)
-            .enter().append("g")
-            .attr("class", "crime");
-        //console.log(crime);*/
-        svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("class", "line")
-            .attr("d", d3.line()
-                .x(d => x(d.year))
-                 .y(d => y(d.murder)))
-    
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("class", "line")
-            .attr("d", d3.line()
-                .x(d => x(d.year))
-                 .y(d => y(d.aggravated_assault)))
-    
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("class", "line")
-            .attr("d", d3.line()
-                .x(d => x(d.year))
-                 .y(d => y(d.rape)))
-    
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("class", "line")
-            .attr("d", d3.line()
-                .x(d => x(d.year))
-                 .y(d => y(d.robbery)))
-    
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "red")
-            .attr("stroke-width", 1.5)
-            .attr("class", "line")
-            .attr("d", d3.line()
-                .x(d => x(d.year))
-                 .y(d => y(d.burglary)))
+        svg.selectAll("bar")
+          .data(murderData)
+          .enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("x", "Murder")
+          .attr("width", x.rangeBand())
+          .attr("y", function(d) { return y(100); })
+          .attr("height", function(d) { return height - y(100); });
     
     
     
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "red")
-            .attr("stroke-width", 1.5)
-            .attr("class", "line")
-            .attr("d", d3.line()
-                .x(d => x(d.year))
-                 .y(d => y(d.larceny_theft)))
-    
-    svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "red")
-            .attr("stroke-width", 1.5)
-            .attr("class", "line")
-            .attr("d", d3.line()
-                .x(d => x(d.year))
-                 .y(d => y(d.motor_vehicle_theft)))
 }
 
     
