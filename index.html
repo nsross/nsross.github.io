@@ -56,7 +56,7 @@ async function main() {
     sel.appendChild(fragment);
     d3.select('#states')
         .on('change', function() {
-       currentState = eval(d3.select(this).property('value'));
+       currentState = d3.select(this).property('value');
         update(murderData.filter(function(d) { return d.state == currentState;}))
     });
     
