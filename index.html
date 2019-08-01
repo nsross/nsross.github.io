@@ -85,7 +85,7 @@ async function main() {
           .attr("width", x.bandwidth());
         
         handguns.transition()
-            .duration(.5)
+            .duration(500)
           .attr("y", function(d) { return y(d.handguns); })
           .attr("height", function(d) { return height - y(d.handguns); });
         
