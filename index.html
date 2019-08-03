@@ -35,13 +35,13 @@ async function main() {
            crime: d.crime,
            total: parseFloat(d.total.replace(/,/g, '')),
            under_18: parseFloat(d.under_18.replace(/,/g, '')),
-           a: parseFloat(d.18to20.replace(/,/g, '')),
-           b: parseFloat(d.21to24.replace(/,/g, '')),
-           c: parseFloat(d.25to29.replace(/,/g, '')),
-           d: parseFloat(d.30to39.replace(/,/g, '')),
-           e: parseFloat(d.40to49.replace(/,/g, '')),
-           f: parseFloat(d.50to59.replace(/,/g, '')),
-           g: parseFloat(d.60_plus.replace(/,/g, ''))
+           a: parseFloat(d._18to20.replace(/,/g, '')),
+           b: parseFloat(d._21to24.replace(/,/g, '')),
+           c: parseFloat(d._25to29.replace(/,/g, '')),
+           d: parseFloat(d._30to39.replace(/,/g, '')),
+           e: parseFloat(d._40to49.replace(/,/g, '')),
+           f: parseFloat(d._50to59.replace(/,/g, '')),
+           g: parseFloat(d._60_plus.replace(/,/g, ''))
        };
     });
 
