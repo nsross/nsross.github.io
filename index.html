@@ -86,7 +86,7 @@ async function main() {
             .data(function(d) { return d; })
             .enter().append("rect")
                 .attr("x", function(d) { return x(d.data.crime); })
-                .attr("y", function(d) { return y(100-d[1]); })
+                .attr("y", function(d) { return y(height - d[1]); })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth());
     
