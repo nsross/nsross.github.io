@@ -26,7 +26,7 @@ var svg = d3.select("#my_viz")
         .attr("height", height + margin.top + margin.bottom)
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-var legendLabels = ["Under 18", "18-20", "21-24", "25-29", "30-39", "40-49", "50-59", "60+"];
+var legendLabels = [ "60+", "50-59", "40-49", "30-39", "25-29", "21-24", "18-20", "Under 18"];
 
 //Read the data
 async function main() {
