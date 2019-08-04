@@ -184,8 +184,8 @@ async function main() {
             .domain([10000, d3.max(data, function(d) { return d.larceny_theft;})])
             .range([ height, 0]);
         svg1.append("g")
-            .call(d3.axisLeft(y))
-                .tickFormat(function(d) {console.log(d); return d;});
+            .call(d3.axisLeft(y)
+                .tickFormat(function(d) {console.log(d); return d;}));
     
         svg1.append("path")
             .datum(data)
