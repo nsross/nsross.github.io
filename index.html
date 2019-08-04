@@ -78,7 +78,7 @@ async function main() {
         svg.append("g")
             .call(d3.axisLeft(y));
     
-        //var z = d3.scaleOrdinal(d3.schemeCategory20).domain(data.columns.slice(1));
+        var z = d3.scaleOrdinal(d3.schemeCategory20);
     
         var stack = d3.stack();
     
