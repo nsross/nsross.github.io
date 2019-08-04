@@ -11,14 +11,14 @@
 
 
 <body onload="main()">
-<div id="scene1">
-    <select id="states">
-        
-    </select>
+<div id="scene1">    
 </div>
 <div id="scene2">
 </div>
 <div id="scene3">
+    <select id="states">
+        
+    </select>
 </div>
 <script>
 
@@ -33,6 +33,13 @@ var svg2 = d3.select("#scene2")
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 var legendLabels = [ "60+", "50-59", "40-49", "30-39", "25-29", "21-24", "18-20", "Under 18"];
+    
+var svg3 = d3.select("#scene3")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -55,8 +62,24 @@ async function main() {
            _60_plus: (parseFloat(d._60_plus.replace(/,/g, ''))/parseFloat(d.total.replace(/,/g, '')))*100,
        };
     });
+    
+    const murderData = await d3.csv("data/murder_guns.csv",
+    (d) => {
+       return {
+           state: d.state,
+           total_murders: parseFloat(d.total_murders.replace(/,/g, '')),
+           total_firearms: parseFloat(d.total_firearms.replace(/,/g, '')),
+           handguns: parseFloat(d.handguns.replace(/,/g, '')),
+           rifles: parseFloat(d.rifles.replace(/,/g, '')),
+           shotguns: parseFloat(d.shotguns.replace(/,/g, '')),
+           unknown_firearm: parseFloat(d.unknown_firearm.replace(/,/g, '')),
+           knives: parseFloat(d.knives.replace(/,/g, '')),
+           other_weapon: parseFloat(d.other_weapon.replace(/,/g, '')),
+           hands: parseFloat(d.hands.replace(/,/g, ''))
+       };
+    });
 
-    /*var sel = document.getElementById('states');
+    var sel = document.getElementById('states');
     var fragment = document.createDocumentFragment();
     murderData.forEach(function(d) {
         var opt = document.createElement('option');
@@ -69,7 +92,9 @@ async function main() {
         .on('change', function() {
        currentState = d3.select(this).property('value');
         update(murderData.filter(function(d) { return d.state == currentState;}))
-    });*/
+    });
+
+
         var x = d3.scaleBand()
             .domain(ageData.map(function(d) {return d.crime;}))
             .range([ 0, width])
@@ -86,6 +111,125 @@ async function main() {
 
         var z = d3.scaleOrdinal(d3.schemeCategory10).domain(ageData.columns.slice(2));
         var stack = d3.stack();
+    
+    function update(data) {
+
+        var handguns = svg3.selectAll(".handguns")
+          .data(data);
+        
+        handguns.enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("class", "handguns")
+          .attr("x", x("Handguns"))
+          .attr("width", x.bandwidth());
+        
+        handguns.transition()
+            .duration(500)
+          .attr("y", function(d) { return y(d.handguns); })
+          .attr("height", function(d) { return height - y(d.handguns); });
+        
+        handguns.exit().remove();
+        
+        var rifles = svg3.selectAll(".rifles")
+          .data(data);
+        
+        rifles.enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("class", "rifles")
+          .attr("x", x("Rifles"))
+          .attr("width", x.bandwidth());
+        
+        rifles.transition()
+          .duration(500)
+          .attr("y", function(d) { return y(d.rifles); })
+          .attr("height", function(d) { return height - y(d.rifles); });
+        
+        rifles.exit().remove();
+        
+        var shotguns = svg3.selectAll(".shotguns")
+          .data(data);
+        
+        shotguns.enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("class", "shotguns")
+          .attr("x", x("Shotguns"))
+          .attr("width", x.bandwidth());
+        
+        shotguns.transition()
+          .duration(500)
+          .attr("y", function(d) { return y(d.shotguns); })
+          .attr("height", function(d) { return height - y(d.shotguns); });
+        
+        shotguns.exit().remove();
+        
+        var unknown_firearm = svg3.selectAll(".unknown_firearm")
+          .data(data);
+        
+        unknown_firearm.enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("class", "unknown_firearm")
+          .attr("x", x("Unknown Firearm"))
+          .attr("width", x.bandwidth());
+        
+        unknown_firearm.transition()
+          .duration(500)
+          .attr("y", function(d) { return y(d.unknown_firearm); })
+          .attr("height", function(d) { return height - y(d.unknown_firearm); });
+        
+        unknown_firearm.exit().remove();
+        
+        var knives = svg3.selectAll(".knives")
+          .data(data);
+        
+          knives.enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("class", "knives")
+          .attr("x", x("Knives"))
+          .attr("width", x.bandwidth());
+        
+        knives.transition()
+          .duration(500)
+          .attr("y", function(d) { return y(d.knives); })
+          .attr("height", function(d) { return height - y(d.knives); });
+        
+        knives.exit().remove();
+        
+        var other_weapon = svg3.selectAll(".other_weapon")
+          .data(data);
+
+          other_weapon.enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("class", "other_weapon")
+          .attr("x", x("Other Weapon"))
+          .attr("width", x.bandwidth());
+        
+        other_weapon.transition()
+          .duration(500)
+          .attr("y", function(d) { return y(d.other_weapon); })
+          .attr("height", function(d) { return height - y(d.other_weapon); });
+        
+        other_weapon.exit().remove();
+        
+        var hands = svg3.selectAll(".hands")
+          .data(data);
+        
+          hands.enter().append("rect")
+          .style("fill", "steelblue")
+          .attr("class", "hands")
+          .attr("x", x("Hands"))
+          .attr("width", x.bandwidth());
+        
+        hands.transition()
+          .duration(500)
+          .attr("y", function(d) { return y(d.hands); })
+          .attr("height", function(d) { return height - y(d.hands); });
+        
+        hands.exit().remove();
+    }
+    
+    //var currentState = "Michigan";
+        
+    //update(murderData.filter(function(d) { return d.state == currentState;}));
 
         svg2.selectAll(".serie")
             .data(stack.keys(ageData.columns.slice(2))(ageData))
@@ -134,12 +278,6 @@ async function main() {
             .attr("dy", ".35em")
             .attr("text-anchor", "start")
             .text(function(d, i) { return legendLabels[i]; });
-    
-    
-    //var currentState = "Michigan";
-        
-    //updateAge(murderData.filter(function(d) { return d.state == currentState;}));
-    
     
     
 }
