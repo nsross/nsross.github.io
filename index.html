@@ -263,6 +263,7 @@ async function main() {
     
     function update3(data) {
 
+        svg3.selectAll("text").remove();
         var sel = document.getElementById('states');
         var fragment = document.createDocumentFragment();
         murderData.forEach(function(d) {
