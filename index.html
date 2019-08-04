@@ -199,6 +199,14 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.murder)));
+        svg1.append("g")
+            .data(data)
+            .append("circle")
+                .attr("cx", d => x(d.year))
+                .attr("cy", d => y(d.murder))
+                .attr("r", 5)
+                .attr("fill", "white")
+                .attr("fill-opacity", .5);
     
     svg1.append("path")
             .datum(data)
