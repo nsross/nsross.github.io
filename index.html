@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States14</h1>
+<h1>Crime in the United States16</h1>
 
 
 <body onload="main()">
@@ -86,7 +86,7 @@ async function main() {
             .data(function(d) { return d; })
             .enter().append("rect")
                 .attr("x", function(d) { return x(d.data.crime); })
-                .attr("y", function(d) { return y(d[1]); })
+                .attr("y", function(d) { return y(100-d[1]); })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth());
     
