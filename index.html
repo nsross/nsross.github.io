@@ -145,8 +145,8 @@ async function main() {
                 .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             
-                svg3.append("select")
-                    .attr("id", "states");
+            d3.select("#scene3").append("select")
+                .attr("id", "states");
             var currentState = "Alaska";
             update3(murderData.filter(function(d) { return d.state == currentState;}));
             update3(murderData.filter(function(d) { return d.state == currentState;}));
