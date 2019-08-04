@@ -112,9 +112,9 @@ async function main() {
         }
     }
     
-    d3.select('#one').on('click', updateSelection(true, false, false));
-    d3.select('#two').on('click', updateSelection(false, true, false));
-    d3.select('#three').on('click', updateSelection(false, false, true));
+    document.getElementById('one').onclick = updateSelection(true, false, false));
+    document.getElementById('two').onclick = updateSelection(false, true, false));
+    document.getElementById('three').onclick = updateSelection(false, false, true));
 
     var sel = document.getElementById('states');
     var fragment = document.createDocumentFragment();
