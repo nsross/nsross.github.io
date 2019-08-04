@@ -117,9 +117,9 @@ async function main() {
                     .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-            var currentState = "Michigan";
-        d3.select('#states').dispatchEvent(new Event('change'));
-            //update3(murderData.filter(function(d) { return d.state == currentState;}));
+            var currentState = "Alabama";
+            update3(murderData.filter(function(d) { return d.state == currentState;}));
+            update3(murderData.filter(function(d) { return d.state == currentState;}));
         }
     }
     
