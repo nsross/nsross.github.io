@@ -118,8 +118,8 @@ async function main() {
                 .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             var currentState = "Michigan";
-        
-            update3(murderData.filter(function(d) { return d.state == currentState;}));
+        d3.select('#states').dispatchEvent(new Event('change'));
+            //update3(murderData.filter(function(d) { return d.state == currentState;}));
         }
     }
     
