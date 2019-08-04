@@ -84,7 +84,7 @@ async function main() {
         var stack = d3.stack();
 
         svg.selectAll(".serie")
-            .data(stack.keys(ageData.columns.slice(2))(data))
+            .data(stack.keys(ageData.columns.slice(2))(ageData))
             .enter().append("g")
                 .attr("class", "serie")
                 .attr("fill", function(d) {return z(d.key); })
