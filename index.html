@@ -5,7 +5,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States13</h1>
+<h1>Crime in the United States14</h1>
 
 
 <body onload="main()">
@@ -59,7 +59,7 @@ async function main() {
        currentState = d3.select(this).property('value');
         update(murderData.filter(function(d) { return d.state == currentState;}))
     });*/
-    
+    console.log(data);
         var x = d3.scaleBand()
             .domain(["Murder", "Rape", "Robbery", "Aggravated Assault", "Burglary", "Larceny Theft", "Motor Vehicle Theft"])
             .range([ 0, width])
