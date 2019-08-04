@@ -73,25 +73,23 @@ async function main() {
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLinear()
-            .domain([0,100])
+            .domain([0,10000])
             .range([ height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
-        console.log("here");
-        var z = d3.scaleOrdinal(d3.schemeCategory10);
-        console.log(data.columns.slice(1));
-        z.domain(data.columns.slice(1));
+
+        var z = d3.scaleOrdinal(d3.schemeCategory10).domain(data.columns.slice(1));
         var stack = d3.stack();
     
         g.selectAll(".serie")
             .data(stack.keys(data.columns.slice(1))(data))
             .enter().append("g")
                 .attr("class", "serie")
-                .attr("fill", function(d) { return z(d.key); })
+                .attr("fill", function(d) {console.log(d.key); return z(d.key); })
             .selectAll("rect")
             .data(function(d) { return d; })
             .enter().append("rect")
-                .attr("x", function(d) { console.log(d); return x(d.data.crime); })
+                .attr("x", function(d) { return x(d.data.crime); })
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth());
