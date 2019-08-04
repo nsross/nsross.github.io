@@ -185,7 +185,7 @@ async function main() {
             .range([ height, 0]);
         svg1.append("g")
             .call(d3.axisLeft(y)
-                .tickFormat(function(d) {console.log(d); return d;}));
+                .ticks(6));
     
         svg1.append("path")
             .datum(data)
