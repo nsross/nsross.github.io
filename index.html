@@ -34,7 +34,7 @@ async function main() {
        return {
            crime: d.crime,
            total: parseFloat(d.total.replace(/,/g, '')),
-           under_18: parseFloat(d.under_18.replace(/,/g, '')),
+           under_18: (parseFloat(d.under_18.replace(/,/g, ''))/parseFloat(d.total.replace(/,/g, '')))*100,
            _18to20: (parseFloat(d._18to20.replace(/,/g, ''))/parseFloat(d.total.replace(/,/g, '')))*100,
            _21to24: (parseFloat(d._21to24.replace(/,/g, ''))/parseFloat(d.total.replace(/,/g, '')))*100,
            _25to29: (parseFloat(d._25to29.replace(/,/g, ''))/parseFloat(d.total.replace(/,/g, '')))*100,
