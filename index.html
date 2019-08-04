@@ -33,7 +33,6 @@ async function main() {
     (d) => {
        return {
            crime: d.crime,
-           total: parseFloat(d.total.replace(/,/g, '')),
            under_18: parseFloat(d.under_18.replace(/,/g, '')),
            a: parseFloat(d._18to20.replace(/,/g, '')),
            b: parseFloat(d._21to24.replace(/,/g, '')),
@@ -44,6 +43,11 @@ async function main() {
            g: parseFloat(d._60_plus.replace(/,/g, ''))
        };
     });
+    var t = 0;
+    for (i = 1; i < data.columns.length; ++i) {
+        t += data[data.columns[i]];
+    }
+    data.total = t;
 
     /*var sel = document.getElementById('states');
     var fragment = document.createDocumentFragment();
