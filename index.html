@@ -37,21 +37,21 @@ var margin = {top: 20, right: 180, bottom: 30, left: 60},
     width = 850 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
     
-var svg2 = d3.select("#scene2")
-    .append("svg")
+var svg2 = d3.select("#scene2");
+   /* .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom);
     svg2.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    console.log(svg2);
+    console.log(svg2);*/
 var legendLabels = [ "60+", "50-59", "40-49", "30-39", "25-29", "21-24", "18-20", "Under 18"];
     
-var svg3 = d3.select("#scene3")
-    .append("svg")
+var svg3 = d3.select("#scene3");
+    /*.append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
     .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");*/
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
