@@ -185,7 +185,13 @@ async function main() {
             .range([ height, 0]);
         svg1.append("g")
             .call(d3.axisLeft(y)
-                .ticks(8));
+                .ticks(8))
+            .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Number of Crimes (log)");
     
         svg1.append("path")
             .datum(data)
