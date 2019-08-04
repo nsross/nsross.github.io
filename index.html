@@ -80,16 +80,16 @@ async function main() {
 
         var z = d3.scaleOrdinal(d3.schemeCategory10).domain(data.columns.slice(1));
         var stack = d3.stack();
-    
+        console.log(stack.keys(data.columns.slice(1))(data));
         g.selectAll(".serie")
             .data(stack.keys(data.columns.slice(1))(data))
             .enter().append("g")
                 .attr("class", "serie")
                 .attr("fill", function(d) {return z(d.key); })
             .selectAll("rect")
-            .data(function(d) { console.log(d); return d; })
+            .data(function(d) { return d; })
             .enter().append("rect")
-                .attr("x", function(d) { console.log(d.data); return x(d.data.crime); })
+                .attr("x", function(d) { return x(d.data.crime); })
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth());
