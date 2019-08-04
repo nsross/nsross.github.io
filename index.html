@@ -193,7 +193,7 @@ async function main() {
         svg1.append("path")
             .datum(data)
             .attr("fill", "none")
-            .attr("stroke", "red")
+            .attr("stroke", d3.schemeCategory10[0])
             .attr("stroke-width", 1.5)
             .attr("class", "line")
             .attr("d", d3.line()
