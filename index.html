@@ -27,9 +27,6 @@
 <div id="scene2">
 </div>
 <div id="scene3">
-    <select id="states">
-        
-    </select>
 </div>
 <script>
 
@@ -146,7 +143,9 @@ async function main() {
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                 .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .append("select")
+                    .attr("id", "states");
             var currentState = "Alaska";
             update3(murderData.filter(function(d) { return d.state == currentState;}));
             update3(murderData.filter(function(d) { return d.state == currentState;}));
