@@ -100,11 +100,11 @@ async function main() {
         if (isOne) {
 
         } else if (isTwo) {
-            d3.select('#scene3').html = "";
-            d3.select('scene2').append(svg2);
+            d3.select('#scene3').remove();
+            d3.select('#scene2').append(svg2);
             update2(ageData);
         } else if (isThree) {
-            d3.select('#scene2').html = "";
+            d3.select('#scene2').remove();
             d3.select('#scene3').append(svg3);
             var currentState = "Michigan";
         
