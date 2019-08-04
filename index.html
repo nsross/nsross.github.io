@@ -94,13 +94,13 @@ async function main() {
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth())
                 .on("mouseover", function(d) {
-                    console.log(d);
+                    console.log(d3.event.pageX);
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    tooltip.html("Percent: ")
+                    tooltip.html("Percent: " + d[1] - d[0] + "%")
                         .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px");          
+                        .style("top", (d3.event.pageY) + "px");          
                 })
                 .on("mouseout", function(d) {
                     tooltip.transition()
