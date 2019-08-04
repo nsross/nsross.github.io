@@ -91,7 +91,7 @@ async function main() {
     d3.select('#states')
         .on('change', function() {
        currentState = d3.select(this).property('value');
-        update(murderData.filter(function(d) { return d.state == currentState;}))
+        update3(murderData.filter(function(d) { return d.state == currentState;}))
     });
 
 
@@ -112,8 +112,22 @@ async function main() {
         var z = d3.scaleOrdinal(d3.schemeCategory10).domain(ageData.columns.slice(2));
         var stack = d3.stack();
     
-    function update(data) {
+    function update3(data) {
 
+         var x = d3.scaleBand()
+            .domain(["Handguns", "Rifles", "Shotguns", "Unknown Firearm", "Knives", "Other Weapon", "Hands"])
+            .range([ 0, width])
+            .paddingInner(.05);
+        svg3.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+        var y = d3.scaleLinear()
+            .domain([0,1000])
+            .range([ height, 0]);
+        svg3.append("g")
+            .call(d3.axisLeft(y));
+        
         var handguns = svg3.selectAll(".handguns")
           .data(data);
         
@@ -230,7 +244,7 @@ async function main() {
     //var currentState = "Michigan";
         
     //update(murderData.filter(function(d) { return d.state == currentState;}));
-
+    function update2(ageData) {
         svg2.selectAll(".serie")
             .data(stack.keys(ageData.columns.slice(2))(ageData))
             .enter().append("g")
@@ -278,6 +292,8 @@ async function main() {
             .attr("dy", ".35em")
             .attr("text-anchor", "start")
             .text(function(d, i) { return legendLabels[i]; });
+    }
+        
     
     
 }
