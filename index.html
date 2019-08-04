@@ -100,7 +100,7 @@ async function main() {
                         .duration(200)
                         .style("opacity", .9);
                     var percent = (d[1] - d[0]).toFixed(2);
-                    var count = (d.data.total * ((d[1] - d[0])/100));
+                    var count = Math.round(d.data.total * ((d[1] - d[0])/100));
                     tooltip.html(count +" people (" + percent + "%)")
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY) + "px");          
