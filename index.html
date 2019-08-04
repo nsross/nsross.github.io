@@ -33,6 +33,7 @@ async function main() {
     (d) => {
        return {
            crime: d.crime,
+           total: parseFloat(d.total.replace(/,/g, '')),
            under_18: parseFloat(d.under_18.replace(/,/g, '')),
            _18to20: parseFloat(d._18to20.replace(/,/g, '')),
            _21to24: parseFloat(d._21to24.replace(/,/g, '')),
@@ -65,7 +66,7 @@ async function main() {
     });*/
     console.log(data);
         var x = d3.scaleBand()
-            .domain(["Murder", "Rape", "Robbery", "Aggravated Assault", "Burglary", "Larceny Theft", "Motor Vehicle Theft"])
+            .domain(data.map(function(d) {return d.crime;}))
             .range([ 0, width])
             .paddingInner(.05);
         g = svg.append("g")
@@ -82,7 +83,7 @@ async function main() {
         var stack = d3.stack();
         console.log(stack.keys(data.columns.slice(1))(data));
         g.selectAll(".serie")
-            .data(stack.keys(data.columns.slice(1))(data))
+            .data(stack.keys(data.columns.slice(2))(data))
             .enter().append("g")
                 .attr("class", "serie")
                 .attr("fill", function(d) {return z(d.key); })
