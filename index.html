@@ -89,7 +89,7 @@ async function main() {
             .selectAll("rect")
             .data(function(d) { console.log(d); return d; })
             .enter().append("rect")
-                .attr("x", function(d) { return x(d.data.crime); })
+                .attr("x", function(d) { console.log(d.data); return x(d.data.crime); })
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth());
