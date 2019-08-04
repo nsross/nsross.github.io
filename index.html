@@ -181,10 +181,11 @@ async function main() {
         .call(d3.axisBottom(x));
     
         var y = d3.scaleLog()
-            .domain([1, d3.max(data, function(d) { return d.larceny_theft;})])
+            .domain([10000, d3.max(data, function(d) { return d.larceny_theft;})])
             .range([ height, 0]);
         svg1.append("g")
-            .call(d3.axisLeft(y));
+            .call(d3.axisLeft(y))
+                .tickFormat(function(d) {console.log(d); return d;});
     
         svg1.append("path")
             .datum(data)
