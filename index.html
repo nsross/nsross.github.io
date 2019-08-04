@@ -79,7 +79,8 @@ async function main() {
             .call(d3.axisLeft(y));
     
         var z = d3.scaleOrdinal(d3.schemeCategory20);
-    
+        console.log(data.columns.slice(1));
+        z.domain(data.columns.slice(1));
         var stack = d3.stack();
     
         g.selectAll(".serie")
