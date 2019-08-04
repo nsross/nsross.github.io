@@ -178,7 +178,12 @@ async function main() {
             .range([ 0, width]);
         svg1.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x))
+        .append("text")
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom)
+            .style("text-anchor", "middle")
+            .text("Year");
     
         var y = d3.scaleLog()
             .domain([10000, d3.max(data, function(d) { return d.larceny_theft;})]).nice()
@@ -188,8 +193,8 @@ async function main() {
                 .ticks(8))
             .append("text")
                 .attr("transform", "rotate(-90)")
-                .attr("y", 100)
-                .attr("x", 10)
+                .attr("y", height / 2)
+                .attr("x", margin.left)
                 .attr("dy", ".71em")
                 .style("text-anchor", "end")
                 .text("Number of Crimes (log)");
