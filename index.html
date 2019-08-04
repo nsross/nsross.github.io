@@ -55,6 +55,12 @@ var svg3 = d3.select("#scene3")
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
+
+var button1 = document.getElementById('one');
+var button2 = document.getElementById('two');
+var button3 = document.getElementById('three');
+    
+
     
 //Read the data
 async function main() {
@@ -89,6 +95,22 @@ async function main() {
            hands: parseFloat(d.hands.replace(/,/g, ''))
        };
     });
+    
+    function updateSelection(isOne, isTwo, isThree) {
+        if (isOne) {
+
+        } else if (isTwo) {
+            update2(ageData);
+        } else if (isThree) {
+            var currentState = "Michigan";
+        
+            update3(murderData.filter(function(d) { return d.state == currentState;}));
+        }
+    }
+    
+    button1.onClick = updateSelection(true, false, false);
+    button2.onClick = updateSelection(false, true, false);
+    button3.onClick = updateSelection(false, false, true);
 
     var sel = document.getElementById('states');
     var fragment = document.createDocumentFragment();
@@ -252,9 +274,7 @@ async function main() {
         hands.exit().remove();
     }
     
-    //var currentState = "Michigan";
-        
-    //update(murderData.filter(function(d) { return d.state == currentState;}));
+
     function update2(ageData) {
         svg2.selectAll(".serie")
             .data(stack.keys(ageData.columns.slice(2))(ageData))
