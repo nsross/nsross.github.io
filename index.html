@@ -115,6 +115,7 @@ async function main() {
         if (isOne) {
             d3.select('#scene1').selectAll('svg').remove();
             d3.select('#scene3').selectAll('svg').remove();
+            d3.select('#scene3').selectAll('select').remove();
             d3.select('#scene2').selectAll('svg').remove();
             svg1 = d3.select("#scene1")
                 .append("svg")
@@ -126,6 +127,7 @@ async function main() {
         } else if (isTwo) {
             d3.select('#scene2').selectAll('svg').remove();
             d3.select('#scene3').selectAll('svg').remove();
+            d3.select('#scene3').selectAll('select').remove();
             d3.select('#scene1').selectAll('svg').remove();
             svg2 = d3.select("#scene2")
                 .append("svg")
@@ -136,6 +138,7 @@ async function main() {
             update2(ageData);
         } else if (isThree) {
             d3.select('#scene3').selectAll('svg').remove();
+            d3.select('#scene3').selectAll('select').remove();
             d3.select('#scene2').selectAll('svg').remove();
             d3.select('#scene1').selectAll('svg').remove();
             svg3 = d3.select("#scene3")
