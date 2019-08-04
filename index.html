@@ -217,7 +217,7 @@ async function main() {
                         .style("opacity", .9);
                     d3.select(this).attr("r", 8);
                     console.log(d);
-                    tooltip.html(d.murder)
+                    tooltip.html("Crimes: " + d.murder)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY) + "px");          
                 })
@@ -249,7 +249,23 @@ async function main() {
             .attr("fill", "white")
             .attr("fill-opacity", .5)
             .attr("stroke-width", 2)
-            .attr("stroke", d3.schemeCategory10[1]);
+            .attr("stroke", d3.schemeCategory10[1])
+            .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    d3.select(this).attr("r", 8);
+                    console.log(d);
+                    tooltip.html("Crimes: " + d.aggravated_assault)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    d3.select(this).attr("r", 5);
+                });
     
     svg1.append("path")
             .datum(data)
@@ -272,7 +288,23 @@ async function main() {
                 .attr("fill", "white")
                 .attr("fill-opacity", .5)
                 .attr("stroke-width", 2)
-                .attr("stroke", d3.schemeCategory10[2]);
+                .attr("stroke", d3.schemeCategory10[2])
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    d3.select(this).attr("r", 8);
+                    console.log(d);
+                    tooltip.html("Crimes: " + d.rape)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    d3.select(this).attr("r", 5);
+                });
     
     svg1.append("path")
             .datum(data)
@@ -295,7 +327,23 @@ async function main() {
                 .attr("fill", "white")
                 .attr("fill-opacity", .5)
                 .attr("stroke-width", 2)
-                .attr("stroke", d3.schemeCategory10[3]);
+                .attr("stroke", d3.schemeCategory10[3])
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    d3.select(this).attr("r", 8);
+                    console.log(d);
+                    tooltip.html("Crimes: " + d.robbery)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    d3.select(this).attr("r", 5);
+                });
     
     svg1.append("path")
             .datum(data)
@@ -318,7 +366,23 @@ async function main() {
                 .attr("fill", "white")
                 .attr("fill-opacity", .5)
                 .attr("stroke-width", 2)
-                .attr("stroke", d3.schemeCategory10[4]);
+                .attr("stroke", d3.schemeCategory10[4])
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    d3.select(this).attr("r", 8);
+                    console.log(d);
+                    tooltip.html("Crimes: " + d.burglary)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    d3.select(this).attr("r", 5);
+                });
       
     svg1.append("path")
             .datum(data)
@@ -341,7 +405,23 @@ async function main() {
                 .attr("fill", "white")
                 .attr("fill-opacity", .5)
                 .attr("stroke-width", 2)
-                .attr("stroke", d3.schemeCategory10[5]);
+                .attr("stroke", d3.schemeCategory10[5])
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    d3.select(this).attr("r", 8);
+                    console.log(d);
+                    tooltip.html("Crimes: " + d.larceny_theft)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    d3.select(this).attr("r", 5);
+                });
     
     svg1.append("path")
             .datum(data)
@@ -364,7 +444,23 @@ async function main() {
                 .attr("fill", "white")
                 .attr("fill-opacity", .5)
                 .attr("stroke-width", 2)
-                .attr("stroke", d3.schemeCategory10[6]);
+                .attr("stroke", d3.schemeCategory10[6])
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    d3.select(this).attr("r", 8);
+                    console.log(d);
+                    tooltip.html("Crimes: " + d.motor_vehicle_theft)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    d3.select(this).attr("r", 5);
+                });
     }
     
     function update3(data) {
