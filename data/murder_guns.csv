@@ -1,5 +1,4 @@
 ﻿state,total_murders,total_firearms,handguns,rifles,shotguns,unknown_firearm,knives,other_weapon,hands
-Alabama,3,1,0,0,0,1,0,2,0
 Alaska,52,43,12,4,1,26,3,6,0
 Arizona,336,227,156,16,10,45,40,63,6
 Arkansas,209,151,72,11,3,65,25,25,8
@@ -50,7 +49,3 @@ West Virginia,76,47,30,2,0,15,4,21,4
 Wisconsin,226,166,119,6,4,37,27,21,12
 Wyoming,19,6,1,0,1,4,8,3,2
 U.S. Virgin Islands,42,34,3,0,0,31,0,8,0
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
