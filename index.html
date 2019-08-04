@@ -116,6 +116,7 @@ async function main() {
     
     function updateSelection(isOne, isTwo, isThree) {
         if (isOne) {
+            d3.select('#scene1').selectAll('svg').remove();
             d3.select('#scene3').selectAll('svg').remove();
             d3.select('#scene2').selectAll('svg').remove();
             svg1 = d3.select("#scene1")
@@ -126,7 +127,9 @@ async function main() {
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             update1(data);
         } else if (isTwo) {
+            d3.select('#scene2').selectAll('svg').remove();
             d3.select('#scene3').selectAll('svg').remove();
+            d3.select('#scene1').selectAll('svg').remove();
             svg2 = d3.select("#scene2")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
@@ -135,7 +138,9 @@ async function main() {
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             update2(ageData);
         } else if (isThree) {
+            d3.select('#scene3').selectAll('svg').remove();
             d3.select('#scene2').selectAll('svg').remove();
+            d3.select('#scene1').selectAll('svg').remove();
             svg3 = d3.select("#scene3")
                 .append("svg")
                     .attr("width", width + margin.left + margin.right)
@@ -189,7 +194,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(d => x(d.year))
-                 .y(d => y(d.murder)))
+                 .y(d => y(d.murder)));
     
     svg1.append("path")
             .datum(data)
@@ -199,7 +204,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(d => x(d.year))
-                 .y(d => y(d.aggravated_assault)))
+                 .y(d => y(d.aggravated_assault)));
     
     svg1.append("path")
             .datum(data)
@@ -209,7 +214,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(d => x(d.year))
-                 .y(d => y(d.rape)))
+                 .y(d => y(d.rape)));
     
     svg1.append("path")
             .datum(data)
@@ -219,7 +224,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(d => x(d.year))
-                 .y(d => y(d.robbery)))
+                 .y(d => y(d.robbery)));
     
     svg1.append("path")
             .datum(data)
@@ -229,7 +234,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(d => x(d.year))
-                 .y(d => y(d.burglary)))
+                 .y(d => y(d.burglary)));
       
     svg1.append("path")
             .datum(data)
@@ -239,7 +244,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(d => x(d.year))
-                 .y(d => y(d.larceny_theft)))
+                 .y(d => y(d.larceny_theft)));
     
     svg1.append("path")
             .datum(data)
@@ -249,7 +254,7 @@ async function main() {
             .attr("class", "line")
             .attr("d", d3.line()
                 .x(d => x(d.year))
-                 .y(d => y(d.motor_vehicle_theft)))
+                 .y(d => y(d.motor_vehicle_theft)));
     }
     
     function update3(data) {
@@ -449,8 +454,8 @@ async function main() {
             .attr("text-anchor", "start")
             .text(function(d, i) { return legendLabels[i]; });
     }
-        
-    
+       
+    update1(data);
     
 }
 
