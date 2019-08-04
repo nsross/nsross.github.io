@@ -217,16 +217,15 @@ async function main() {
                         .style("opacity", .9);
                     d3.select(this).attr("r", 8);
                     console.log(d);
-                    //var percent = (d[1] - d[0]).toFixed(2);
-                    //var count = Math.round(d.data.total * ((d[1] - d[0])/100));
-                    //tooltip.html(count +" people (" + percent + "%)")
-                       // .style("left", (d3.event.pageX) + "px")
-                       // .style("top", (d3.event.pageY) + "px");          
+                    tooltip.html(d.murder)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");          
                 })
                 .on("mouseout", function(d) {
                     tooltip.transition()
                         .duration(500)
                         .style("opacity", 0);
+                    d3.select(this).attr("r", 5);
                 });
     
     svg1.append("path")
