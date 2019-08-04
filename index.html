@@ -98,7 +98,7 @@ async function main() {
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    tooltip.html("Percent: ");
+                    tooltip.html("Percent: ")
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");          
                 })
