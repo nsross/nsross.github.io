@@ -37,6 +37,13 @@ var margin = {top: 20, right: 180, bottom: 30, left: 60},
     width = 850 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
     
+var svg1 = d3.select("#scene1");
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
 var svg2 = d3.select("#scene2");
    /* .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -57,14 +64,24 @@ var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-//var button1 = document.getElementById('one');
-//var button2 = document.getElementById('two');
-//var button3 = document.getElementById('three');
-    
-
     
 //Read the data
 async function main() {
+    
+    const data = await d3.csv("data/table-1.csv",
+    (d) => {
+       return {
+            year: d3.timeParse("%Y")(d.year),
+           murder: parseFloat(d.murder.replace(/,/g, '')),
+           rape: parseFloat(d.rape.replace(/,/g, '')),
+           robbery: parseFloat(d.robbery.replace(/,/g, '')),
+           aggravated_assault: parseFloat(d.aggravated_assault.replace(/,/g, '')),
+           burglary: parseFloat(d.burglary.replace(/,/g, '')),
+           larceny_theft: parseFloat(d.larceny_theft.replace(/,/g, '')),
+           motor_vehicle_theft: parseFloat(d.motor_vehicle_theft.replace(/,/g, ''))
+       };
+    });
+    
     const ageData = await d3.csv("data/age.csv",
     (d) => {
        return {
@@ -99,7 +116,15 @@ async function main() {
     
     function updateSelection(isOne, isTwo, isThree) {
         if (isOne) {
-
+            d3.select('#scene3').selectAll('svg').remove();
+            d3.select('#scene2').selectAll('svg').remove();
+            svg1 = d3.select("#scene1");
+                .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            update1(data);
         } else if (isTwo) {
             d3.select('#scene3').selectAll('svg').remove();
             svg2 = d3.select("#scene2")
@@ -141,6 +166,91 @@ async function main() {
        currentState = d3.select(this).property('value');
         update3(murderData.filter(function(d) { return d.state == currentState;}))
     });
+    
+    function update1(data) {
+         var x = d3.scaleTime()
+            .domain(d3.extent(data, function(d) {return d.year;}))
+            .range([ 0, width]);
+        svg1.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+        var y = d3.scaleLinear()
+            .domain([0, d3.max(data, function(d) { return d.larceny_theft;})]).nice()
+            .range([ height, 0]);
+        svg1.append("g")
+            .call(d3.axisLeft(y));
+    
+        svg1.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.murder)))
+    
+    svg1.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.aggravated_assault)))
+    
+    svg1.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.rape)))
+    
+    svg1.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.robbery)))
+    
+    svg1.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.burglary)))
+      
+    svg1.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.larceny_theft)))
+    
+    svg1.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("class", "line")
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                 .y(d => y(d.motor_vehicle_theft)))
+    }
     
     function update3(data) {
 
