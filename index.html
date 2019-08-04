@@ -90,7 +90,7 @@ async function main() {
                 .attr("width", x.bandwidth());
     
         var legend = svg.selectAll(".legend")
-            .data(data.columns.slice(1).reverse())
+            .data(data.columns.slice(2).reverse())
             .enter().append("g")
                 .attr("class", "legend")
                 .attr("transform", function(d, i) {return "translate(0," + i*20 + ")";})
