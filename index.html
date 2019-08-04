@@ -221,6 +221,19 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.aggravated_assault)));
+        
+    svg1.append("g")
+        .selectAll(".dot")
+        .data(data)
+        .enter()
+        .append("circle")
+            .attr("cx", function(d) {return x(d.year);})
+            .attr("cy", function(d) {return y(d.aggravated_assault);})
+            .attr("r", 5)
+            .attr("fill", "white")
+            .attr("fill-opacity", .5)
+            .attr("stroke-width", 2)
+            .attr("stroke", d3.schemeCategory10[1]);
     
     svg1.append("path")
             .datum(data)
@@ -231,6 +244,19 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.rape)));
+        
+    svg1.append("g")
+            .selectAll(".dot")
+            .data(data)
+            .enter()
+            .append("circle")
+                .attr("cx", function(d) {return x(d.year);})
+                .attr("cy", function(d) {return y(d.rape);})
+                .attr("r", 5)
+                .attr("fill", "white")
+                .attr("fill-opacity", .5)
+                .attr("stroke-width", 2)
+                .attr("stroke", d3.schemeCategory10[2]);
     
     svg1.append("path")
             .datum(data)
@@ -241,6 +267,19 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.robbery)));
+        
+    svg1.append("g")
+            .selectAll(".dot")
+            .data(data)
+            .enter()
+            .append("circle")
+                .attr("cx", function(d) {return x(d.year);})
+                .attr("cy", function(d) {return y(d.robbery);})
+                .attr("r", 5)
+                .attr("fill", "white")
+                .attr("fill-opacity", .5)
+                .attr("stroke-width", 2)
+                .attr("stroke", d3.schemeCategory10[3]);
     
     svg1.append("path")
             .datum(data)
@@ -251,6 +290,19 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.burglary)));
+        
+    svg1.append("g")
+            .selectAll(".dot")
+            .data(data)
+            .enter()
+            .append("circle")
+                .attr("cx", function(d) {return x(d.year);})
+                .attr("cy", function(d) {return y(d.burglary);})
+                .attr("r", 5)
+                .attr("fill", "white")
+                .attr("fill-opacity", .5)
+                .attr("stroke-width", 2)
+                .attr("stroke", d3.schemeCategory10[4]);
       
     svg1.append("path")
             .datum(data)
@@ -261,6 +313,19 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.larceny_theft)));
+        
+    svg1.append("g")
+            .selectAll(".dot")
+            .data(data)
+            .enter()
+            .append("circle")
+                .attr("cx", function(d) {return x(d.year);})
+                .attr("cy", function(d) {return y(d.larceny_theft);})
+                .attr("r", 5)
+                .attr("fill", "white")
+                .attr("fill-opacity", .5)
+                .attr("stroke-width", 2)
+                .attr("stroke", d3.schemeCategory10[5]);
     
     svg1.append("path")
             .datum(data)
@@ -271,6 +336,19 @@ async function main() {
             .attr("d", d3.line()
                 .x(d => x(d.year))
                  .y(d => y(d.motor_vehicle_theft)));
+        
+    svg1.append("g")
+            .selectAll(".dot")
+            .data(data)
+            .enter()
+            .append("circle")
+                .attr("cx", function(d) {return x(d.year);})
+                .attr("cy", function(d) {return y(d.motor_vehicle_theft);})
+                .attr("r", 5)
+                .attr("fill", "white")
+                .attr("fill-opacity", .5)
+                .attr("stroke-width", 2)
+                .attr("stroke", d3.schemeCategory10[6]);
     }
     
     function update3(data) {
