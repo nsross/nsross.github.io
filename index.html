@@ -37,7 +37,7 @@ var margin = {top: 20, right: 180, bottom: 30, left: 60},
     width = 850 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
     
-var svg1 = d3.select("#scene1");
+var svg1 = d3.select("#scene1")
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
