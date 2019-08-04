@@ -28,6 +28,10 @@ var svg = d3.select("#my_viz")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 var legendLabels = [ "60+", "50-59", "40-49", "30-39", "25-29", "21-24", "18-20", "Under 18"];
 
+var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+    
 //Read the data
 async function main() {
     const data = await d3.csv("data/age.csv",
@@ -88,7 +92,21 @@ async function main() {
                 .attr("x", function(d) { return x(d.data.crime); })
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-                .attr("width", x.bandwidth());
+                .attr("width", x.bandwidth())
+                .on("mouseover", function(d) {
+                    console.log(d);
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    tooltip.html("Percent: ");
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
     
         var legend = svg.selectAll(".legend")
             .data(data.columns.slice(2).reverse())
