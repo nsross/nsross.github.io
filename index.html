@@ -178,8 +178,9 @@ async function main() {
             .range([ 0, width]);
         svg1.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
-        .append("text")
+        .call(d3.axisBottom(x));
+        
+        svg1.append("text")
             .attr("x", width / 2)
             .attr("y", height + margin.bottom)
             .style("text-anchor", "middle")
@@ -190,8 +191,9 @@ async function main() {
             .range([ height, 0]);
         svg1.append("g")
             .call(d3.axisLeft(y)
-                .ticks(8))
-            .append("text")
+                .ticks(8));
+        
+        svg1.append("text")
                 .attr("transform", "rotate(-90)")
                 .attr("y", height / 2)
                 .attr("x", margin.left)
