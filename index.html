@@ -56,9 +56,9 @@ var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-var button1 = document.getElementById('one');
-var button2 = document.getElementById('two');
-var button3 = document.getElementById('three');
+//var button1 = document.getElementById('one');
+//var button2 = document.getElementById('two');
+//var button3 = document.getElementById('three');
     
 
     
@@ -112,9 +112,9 @@ async function main() {
         }
     }
     
-    button1.onClick = updateSelection(true, false, false);
-    button2.onClick = updateSelection(false, true, false);
-    button3.onClick = updateSelection(false, false, true);
+    d3.select('#one').on('click', updateSelection(true, false, false));
+    d3.select('#one').on('click', updateSelection(false, true, false));
+    d3.select('#one').on('click', updateSelection(false, false, true));
 
     var sel = document.getElementById('states');
     var fragment = document.createDocumentFragment();
