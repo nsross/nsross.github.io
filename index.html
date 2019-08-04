@@ -64,7 +64,7 @@ async function main() {
             .domain(data.map(function(d) {return d.crime;}))
             .range([ 0, width])
             .paddingInner(.05);
-        g = svg.append("g")
+        svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
     
@@ -77,7 +77,7 @@ async function main() {
         var z = d3.scaleOrdinal(d3.schemeCategory10).domain(data.columns.slice(2));
         var stack = d3.stack();
         console.log(stack.keys(data.columns.slice(2))(data));
-        g.selectAll(".serie")
+        svg.selectAll(".serie")
             .data(stack.keys(data.columns.slice(2))(data))
             .enter().append("g")
                 .attr("class", "serie")
@@ -86,7 +86,7 @@ async function main() {
             .data(function(d) { return d; })
             .enter().append("rect")
                 .attr("x", function(d) { return x(d.data.crime); })
-                .attr("y", function(d) { return height - y(d[1]); })
+                .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth());
     
