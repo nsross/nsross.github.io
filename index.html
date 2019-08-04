@@ -208,7 +208,9 @@ async function main() {
                 .attr("cy", function(d) {return y(d.murder);})
                 .attr("r", 5)
                 .attr("fill", "white")
-                .attr("fill-opacity", .5);
+                .attr("fill-opacity", .5)
+                .attr("stroke-width", 2)
+                .attr("stroke", "red");
     
     svg1.append("path")
             .datum(data)
