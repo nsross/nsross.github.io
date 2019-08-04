@@ -38,7 +38,7 @@ var margin = {top: 20, right: 180, bottom: 30, left: 60},
     height = 400 - margin.top - margin.bottom;
     
 var svg2 = d3.select("#scene2")
-    .append("svg")
+    .append("svg2")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom);
     svg2.append("g")
@@ -47,7 +47,7 @@ var svg2 = d3.select("#scene2")
 var legendLabels = [ "60+", "50-59", "40-49", "30-39", "25-29", "21-24", "18-20", "Under 18"];
     
 var svg3 = d3.select("#scene3")
-    .append("svg")
+    .append("svg3")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -101,12 +101,22 @@ async function main() {
         if (isOne) {
 
         } else if (isTwo) {
-            d3.select('#scene3').remove();
-            d3.select('#scene2').appendChild(svg2);
+            d3.select('#svg3').remove();
+            svg2 = d3.select("#scene2")
+                .append("svg2")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom);
+            svg2.append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             update2(ageData);
         } else if (isThree) {
-            d3.select('#scene2').remove();
-            d3.select('#scene3').appendChild(svg3);
+            d3.select('#svg2').remove();
+            svg3 = d3.select("#scene3")
+                .append("svg3")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             var currentState = "Michigan";
         
             update3(murderData.filter(function(d) { return d.state == currentState;}));
