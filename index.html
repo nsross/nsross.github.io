@@ -210,7 +210,24 @@ async function main() {
                 .attr("fill", "white")
                 .attr("fill-opacity", .5)
                 .attr("stroke-width", 2)
-                .attr("stroke", d3.schemeCategory10[0]);
+                .attr("stroke", d3.schemeCategory10[0])
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    d3.select(this).attr("r", 8);
+                    console.log(d);
+                    //var percent = (d[1] - d[0]).toFixed(2);
+                    //var count = Math.round(d.data.total * ((d[1] - d[0])/100));
+                    //tooltip.html(count +" people (" + percent + "%)")
+                       // .style("left", (d3.event.pageX) + "px")
+                       // .style("top", (d3.event.pageY) + "px");          
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
     
     svg1.append("path")
             .datum(data)
