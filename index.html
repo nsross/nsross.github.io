@@ -7,7 +7,7 @@
 <script src="//d3js.org/d3.v5.js"></script>
 
 
-<h1>Crime in the United States18</h1>
+<h1>Crime in the United States19</h1>
 
 
 <body onload="main()">
@@ -126,24 +126,6 @@ async function main() {
        currentState = d3.select(this).property('value');
         update3(murderData.filter(function(d) { return d.state == currentState;}))
     });
-
-
-        var x = d3.scaleBand()
-            .domain(ageData.map(function(d) {return d.crime;}))
-            .range([ 0, width])
-            .paddingInner(.05);
-        svg2.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-    
-        var y = d3.scaleLinear()
-            .domain([0,100])
-            .range([ height, 0]);
-        svg2.append("g")
-            .call(d3.axisLeft(y));
-
-        var z = d3.scaleOrdinal(d3.schemeCategory10).domain(ageData.columns.slice(2));
-        var stack = d3.stack();
     
     function update3(data) {
 
@@ -276,6 +258,24 @@ async function main() {
     
 
     function update2(ageData) {
+        
+        var x = d3.scaleBand()
+            .domain(ageData.map(function(d) {return d.crime;}))
+            .range([ 0, width])
+            .paddingInner(.05);
+        svg2.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+        var y = d3.scaleLinear()
+            .domain([0,100])
+            .range([ height, 0]);
+        svg2.append("g")
+            .call(d3.axisLeft(y));
+
+        var z = d3.scaleOrdinal(d3.schemeCategory10).domain(ageData.columns.slice(2));
+        var stack = d3.stack();
+        
         svg2.selectAll(".serie")
             .data(stack.keys(ageData.columns.slice(2))(ageData))
             .enter().append("g")
