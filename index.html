@@ -36,7 +36,7 @@ var tooltip = d3.select("body").append("div")
     
 //Read the data
 async function main() {
-    const data = await d3.csv("data/age.csv",
+    const ageData = await d3.csv("data/age.csv",
     (d) => {
        return {
            crime: d.crime,
@@ -67,7 +67,7 @@ async function main() {
         update(murderData.filter(function(d) { return d.state == currentState;}))
     });*/
         var x = d3.scaleBand()
-            .domain(data.map(function(d) {return d.crime;}))
+            .domain(ageData.map(function(d) {return d.crime;}))
             .range([ 0, width])
             .paddingInner(.05);
         svg.append("g")
@@ -80,11 +80,11 @@ async function main() {
         svg.append("g")
             .call(d3.axisLeft(y));
 
-        var z = d3.scaleOrdinal(d3.schemeCategory10).domain(data.columns.slice(2));
+        var z = d3.scaleOrdinal(d3.schemeCategory10).domain(ageData.columns.slice(2));
         var stack = d3.stack();
 
         svg.selectAll(".serie")
-            .data(stack.keys(data.columns.slice(2))(data))
+            .data(stack.keys(ageData.columns.slice(2))(data))
             .enter().append("g")
                 .attr("class", "serie")
                 .attr("fill", function(d) {return z(d.key); })
@@ -112,7 +112,7 @@ async function main() {
                 });
     
         var legend = svg.selectAll(".legend")
-            .data(data.columns.slice(2).reverse())
+            .data(ageData.columns.slice(2).reverse())
             .enter().append("g")
                 .attr("class", "legend")
                 .attr("transform", function(d, i) {return "translate(0," + i*20 + ")";})
