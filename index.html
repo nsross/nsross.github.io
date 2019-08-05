@@ -162,7 +162,7 @@ async function main() {
             d3.selectAll('#two').attr("class", "notselected");
             d3.selectAll('#three').attr("class", "selected");
             title.innerHTML = "Weapons Used for Murder by State";
-            text.innerHTML = "Here we can see how often certain weapons are used to commit murder in 2016 and how that varies by state";
+            text.innerHTML = "Here we can see how often certain weapons are used to commit murder in 2016 and how that varies by state.<br> Politicians focus their attention on limiting rifles when handguns are by far responsible for more deaths.";
             svg3 = d3.select("#scene3")
                 .append("svg")
                     .attr("width", width + margin.left + margin.right)
@@ -668,6 +668,12 @@ async function main() {
           .attr("height", function(d) { return height - y(d.hands); });
         
         hands.exit().remove();
+        
+        svg3.append("text")
+            .attr("x", width - 600)
+            .attr("y", height - 300)
+            .attr("class", "annotation")
+            .text("-- 19x more than rifles");
     }
     
 
