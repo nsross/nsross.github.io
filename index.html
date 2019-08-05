@@ -751,7 +751,8 @@ async function main() {
         svg2.append("text")
             .attr("x", width - 100)
             .attr("y", height - 100)
-            .text("Annotation");
+            .attr("class", "annotation")
+            .text("- Most common crime <br>for all ages groups");
     }
     d3.selectAll('#one').attr("class", "selected");   
     update1(data);
