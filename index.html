@@ -464,7 +464,7 @@ async function main() {
                 });
         
         var legend = svg1.selectAll(".legend")
-            .data(data.columns.slice(2).reverse())
+            .data(data.columns.slice(3).reverse())
             .enter().append("g")
                 .attr("class", "legend")
                 .attr("transform", function(d, i) {return "translate(0," + i*20 + ")";})
@@ -474,7 +474,7 @@ async function main() {
             .attr("x", width + 18)
             .attr("width", 18)
             .attr("height", 18)
-            .attr("fill", function(d, i) {return d3.schemeCategory10[i];});
+            .attr("fill", function(d, i) {return d3.schemeCategory10.reverse()[i];});
     
         legend.append("text")
             .attr("x", width + 44)
