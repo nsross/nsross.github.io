@@ -742,7 +742,7 @@ async function main() {
             .attr("text-anchor", "start")
             .text(function(d, i) { return legendLabels[i]; });
     }
-       
+    d3.selectAll('#one').attr("class", "selected");   
     update1(data);
     
 }
