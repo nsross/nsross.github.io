@@ -714,7 +714,7 @@ async function main() {
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    d3.select(this).attr("stroke", "black").attr("stroke-width", 1);
+                    d3.select(this).attr("stroke", "black").attr("stroke-width", 2);
                     var percent = (d[1] - d[0]).toFixed(2);
                     var count = Math.round(d.data.total * ((d[1] - d[0])/100));
                     tooltip.html(count +" people (" + percent + "%)")
@@ -725,6 +725,7 @@ async function main() {
                     tooltip.transition()
                         .duration(500)
                         .style("opacity", 0);
+                    d3.select(this).attr("stroke", "none").attr("stroke-width", 0);
                 });
     
         var legend = svg2.selectAll(".legend")
