@@ -503,6 +503,12 @@ async function main() {
             .attr("dy", ".35em")
             .attr("text-anchor", "start")
             .text(function(d, i) { return legendLabels2[i]; });
+        
+        svg2.append("text")
+            .attr("x", width - 250)
+            .attr("y", height - 300)
+            .attr("class", "annotation")
+            .text("-- VINCheck introduced");
     }
     
     function update3(data) {
@@ -752,7 +758,7 @@ async function main() {
             .attr("x", width - 130)
             .attr("y", height - 100)
             .attr("class", "annotation")
-            .text("-- Most common crime for all ages groups");
+            .text("-- Most common crime for all age groups");
     }
     d3.selectAll('#one').attr("class", "selected");   
     update1(data);
