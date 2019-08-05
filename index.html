@@ -122,7 +122,9 @@ async function main() {
             d3.select('#scene3').selectAll('select').remove();
             d3.select('#scene2').selectAll('svg').remove();            
             title.innerHTML = "Types of Crime";
-            d3.selectAll('#one').attr("color", "red");
+            d3.selectAll('#one').attr("class", "selected");
+            d3.selectAll('#two').attr("class", "notselected");
+            d3.selectAll('#three').attr("class", "notselected");
             svg1 = d3.select("#scene1")
                 .append("svg")
                     .attr("width", width + margin.left + margin.right)
@@ -135,6 +137,9 @@ async function main() {
             d3.select('#scene3').selectAll('svg').remove();
             d3.select('#scene3').selectAll('select').remove();
             d3.select('#scene1').selectAll('svg').remove();
+            d3.selectAll('#one').attr("class", "notselected");
+            d3.selectAll('#two').attr("class", "selected");
+            d3.selectAll('#three').attr("class", "notselected");
             title.innerHTML = "Percent of Crimes by Age";
             svg2 = d3.select("#scene2")
                 .append("svg")
@@ -148,6 +153,9 @@ async function main() {
             d3.select('#scene3').selectAll('select').remove();
             d3.select('#scene2').selectAll('svg').remove();
             d3.select('#scene1').selectAll('svg').remove();
+            d3.selectAll('#one').attr("class", "notselected");
+            d3.selectAll('#two').attr("class", "notselected");
+            d3.selectAll('#three').attr("class", "selected");
             title.innerHTML = "Weapons Used for Murder by State";
             svg3 = d3.select("#scene3")
                 .append("svg")
