@@ -50,6 +50,7 @@ var svg2 = d3.select("#scene2");
     console.log(svg2);*/
 var legendLabels = [ "60+", "50-59", "40-49", "30-39", "25-29", "21-24", "18-20", "Under 18"];
 var legendLabels2 = [ "Larceny Theft", "Burglary", "Motor Vehicle Theft", "Aggravated Assault", "Robbery", "Rape", "Murder"];   
+//var legendColors2 = [d3.schemeCategory10[6]]
 
 var svg3 = d3.select("#scene3");
     /*.append("svg")
@@ -474,7 +475,7 @@ async function main() {
             .attr("x", width + 18)
             .attr("width", 18)
             .attr("height", 18)
-            .attr("fill", function(d, i) {return d3.schemeCategory10.reverse()[i];});
+            .attr("fill", function(d, i) {return d3.schemeCategory10[6-i];});
     
         legend.append("text")
             .attr("x", width + 44)
