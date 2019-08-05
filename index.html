@@ -49,7 +49,9 @@ var svg2 = d3.select("#scene2");
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     console.log(svg2);*/
 var legendLabels = [ "60+", "50-59", "40-49", "30-39", "25-29", "21-24", "18-20", "Under 18"];
-    
+var legendLabels2 = [ "Larceny Theft", "Burglary", "Motor Vehicle Theft", "Aggravated Assault", "Robbery", "Rape", "Murder"]
+var legend2Colors = [d3.]    
+
 var svg3 = d3.select("#scene3");
     /*.append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -461,6 +463,26 @@ async function main() {
                         .style("opacity", 0);
                     d3.select(this).attr("r", 5);
                 });
+        
+        var legend = svg1.selectAll(".legend")
+            .data(data.columns.slice(2).reverse())
+            .enter().append("g")
+                .attr("class", "legend")
+                .attr("transform", function(d, i) {return "translate(0," + i*20 + ")";})
+                .style("font", "10px sans-serif");
+    
+        legend.append("rect")
+            .attr("x", width + 18)
+            .attr("width", 18)
+            .attr("height", 18)
+            .attr("fill", function(d, i) {return d3.schemeCategory10[i];});
+    
+        legend.append("text")
+            .attr("x", width + 44)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .attr("text-anchor", "start")
+            .text(function(d, i) { return legendLabels2[i]; });
     }
     
     function update3(data) {
