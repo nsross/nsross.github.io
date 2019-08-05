@@ -670,8 +670,9 @@ async function main() {
         hands.exit().remove();
         
         svg3.append("text")
-            .attr("x", width - 600)
+            .attr("x", width - 580)
             .attr("y", height - 300)
+            .attr("transform", "rotate(-90)")
             .attr("class", "annotation")
             .text("-- 19x more than rifles");
     }
