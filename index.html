@@ -747,6 +747,11 @@ async function main() {
             .attr("dy", ".35em")
             .attr("text-anchor", "start")
             .text(function(d, i) { return legendLabels[i]; });
+        
+        svg2.append("text")
+            .attr("x", width - 100)
+            .attr("y", height - 100)
+            .text("Annotation");
     }
     d3.selectAll('#one').attr("class", "selected");   
     update1(data);
