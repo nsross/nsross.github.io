@@ -122,7 +122,7 @@ async function main() {
             d3.select('#scene3').selectAll('select').remove();
             d3.select('#scene2').selectAll('svg').remove();            
             title.innerHTML = "Types of Crime";
-            d3.selectAll('one').attr("class", "selected");
+            d3.selectAll('#one').attr("class", "selected");
             svg1 = d3.select("#scene1")
                 .append("svg")
                     .attr("width", width + margin.left + margin.right)
